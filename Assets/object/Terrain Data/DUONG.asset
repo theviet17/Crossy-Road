@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce57430f4739f141963884acdbc52b7, type: 3}
+  m_Name: DUONG
+  m_EditorClassIdentifier: 
+  possibleTerrain:
+  - {fileID: 5286287462918500875, guid: 0c30968999136884cb0c5570ae4745eb, type: 3}
+  - {fileID: 5134492978870432131, guid: 9b4edc28490631e479139fdf698e7ed2, type: 3}
+  - {fileID: 6702277109270607242, guid: 09d7ff3c380064a419f3ba3c7f9a5f73, type: 3}
+  - {fileID: 5782222345931943337, guid: f3c398dd7d8c9184da06f88f78c1414f, type: 3}
+  - {fileID: 152643140736872619, guid: 0b4b3f15e9becc041848ca23d79a0f19, type: 3}
+  - {fileID: 5050622810257340002, guid: ce3a4325f33ae83418d822e046df62da, type: 3}
+  - {fileID: 8662787833803787736, guid: 043a06e2797135146bb0e65855214bed, type: 3}
+  - {fileID: 6553388385350784367, guid: e69b1e72c53b9c441bf90fb36e07095b, type: 3}
+  - {fileID: 467510484461940735, guid: 5fa8d00758c849f4ebe11b72d634ae68, type: 3}
+  - {fileID: 7560989654726891271, guid: 4ac08557345383643a75160a011d25a3, type: 3}
+  - {fileID: 2961532032835698140, guid: c76b9f4437939424a81f0a5d66774ad9, type: 3}
+  - {fileID: 8985815875446053865, guid: 58eba4550d96b284e817091c8cb87ff9, type: 3}
+  - {fileID: 6895738006888098620, guid: 2c64f3c0c4732cc44b7437e9e0f5c27c, type: 3}
+  maxInSuccession: 4

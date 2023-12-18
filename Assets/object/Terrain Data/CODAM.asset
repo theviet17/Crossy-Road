@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce57430f4739f141963884acdbc52b7, type: 3}
+  m_Name: CODAM
+  m_EditorClassIdentifier: 
+  possibleTerrain:
+  - {fileID: 3387224419249497533, guid: 49abafc529a8b9a4785f12026a1919a3, type: 3}
+  - {fileID: 5756504288895395902, guid: b75c8c6a662ed2f4a8988709f3147fa3, type: 3}
+  - {fileID: 2552582385498435380, guid: ff8a4aec6b06ad4449f92b95d97e015a, type: 3}
+  - {fileID: 3395463686165175340, guid: 3513ed937683918409f59214d23f2076, type: 3}
+  maxInSuccession: 2
