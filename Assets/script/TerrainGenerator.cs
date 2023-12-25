@@ -27,6 +27,7 @@ public class TerrainGenerator : MonoBehaviour
         for (int i = 0; i < terrainInSuccession; i++)
         {
             GameObject terrain = Instantiate(terrainDatas[wichTerrain].possibleTerrain[Random.Range(0,terrainDatas[wichTerrain].possibleTerrain.Count)], currentPosition, Quaternion.identity, terrainHolder);
+            terrain.transform.SetParent(gameObject.transform);
             
             currentTerrains.Add(terrain);
             if (!isStart) 
