@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
@@ -9,9 +10,9 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private List<TerrainData> terrainDatas = new List<TerrainData>();
     [SerializeField] private Transform terrainHolder;
 
-    private List<GameObject> currentTerrains = new List<GameObject>();
+    [HideInInspector] public List<GameObject> currentTerrains = new List<GameObject>();
     [HideInInspector] public Vector3 currentPosition = new Vector3(0, 0, 0);
-    private void Start()
+    public void TerrainGeneratorStart()
     {
         for (int i = 0; i < maxTerrainCount; i++)
         {
@@ -27,7 +28,6 @@ public class TerrainGenerator : MonoBehaviour
         for (int i = 0; i < terrainInSuccession; i++)
         {
             GameObject terrain = Instantiate(terrainDatas[wichTerrain].possibleTerrain[Random.Range(0,terrainDatas[wichTerrain].possibleTerrain.Count)], currentPosition, Quaternion.identity, terrainHolder);
-            terrain.transform.SetParent(gameObject.transform);
             
             currentTerrains.Add(terrain);
             if (!isStart) 
@@ -41,6 +41,11 @@ public class TerrainGenerator : MonoBehaviour
             currentPosition.x++;
         }
         }
+    }
+
+    public GameObject CurrentTerrainJumpIn(float x)
+    {
+        return currentTerrains.FirstOrDefault(terrain => terrain.transform.position.x == x);
     }
 
 }

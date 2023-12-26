@@ -8,6 +8,10 @@ TagManager:
   - l1
   - l2
   - nopoint
+  - Grass
+  - Track
+  - Road
+  - Water
   layers:
   - Default
   - TransparentFX

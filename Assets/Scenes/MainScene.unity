@@ -5764,6 +5764,7 @@ GameObject:
   - component: {fileID: 549864260}
   - component: {fileID: 549864259}
   - component: {fileID: 549864262}
+  - component: {fileID: 549864263}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5850,6 +5851,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainGenerator: {fileID: 955677481}
+  speed: 0
+  jumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 4.1613364
+      outSlope: 4.1613364
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.0501015
+    - serializedVersion: 3
+      time: 0.49898708
+      value: 0.75778884
+      inSlope: 0.010331645
+      outSlope: 0.010331645
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.44279554
+    - serializedVersion: 3
+      time: 1
+      value: 0.002357483
+      inSlope: -3.982116
+      outSlope: -3.982116
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.049898867
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  jumpTime: 0.3
+--- !u!65 &549864263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549864257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.61968195, y: 0.75256425, z: 0.50971055}
+  m_Center: {x: -0.025201797, y: -0.032074958, z: 0.0022910833}
 --- !u!1001 &550803253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9952,6 +10001,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 955677481, guid: bcfd3ec7b5446a0428729092bbe7429c, type: 3}
+      propertyPath: terrainHolder
+      value: 
+      objectReference: {fileID: 557622180}
+    - target: {fileID: 955677481, guid: bcfd3ec7b5446a0428729092bbe7429c, type: 3}
       propertyPath: maxTerrainCount
       value: 40
       objectReference: {fileID: 0}
@@ -10440,7 +10493,7 @@ BoxCollider:
   m_GameObject: {fileID: 967398052}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -18193,6 +18246,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bdf2ce9ef46e8b46b5d7b8b7df4b39e, type: 3}
+--- !u!1 &1673588231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1673588233}
+  - component: {fileID: 1673588232}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1673588232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673588231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083af6f20db454c689573718cd617af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrainGenerator: {fileID: 955677481}
+  playerController: {fileID: 549864262}
+--- !u!4 &1673588233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673588231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1675149571
 PrefabInstance:
   m_ObjectHideFlags: 0
