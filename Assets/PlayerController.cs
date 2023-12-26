@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AnimationCurve scaleCurve;
 
     [SerializeField] private float jumpTime = 0.3f;
+    [SerializeField] private float scaleTime = 0.03f;
     //private GameObject currentTerrainJumpIn;
     private float currentX = 0;
 
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
             Vector3 startScale, Vector3 targetScale, 
             Vector3 startPosition, Vector3 targetPosition)
         {
-            yield return 0.03f.ScaleObject(
+            yield return scaleTime.ScaleObject(
                 (s) => childObject.localScale = s, startScale, targetScale,
                 (p) => childObject.localPosition = p, startPosition, targetPosition,
                 scaleCurve, flagContainer);
@@ -76,7 +77,7 @@ public class PlayerController : MonoBehaviour
         yield return TweenScale(new Vector3(0.5f, 0.5f, 0.5f), new Vector3(0.5f, 0.3f, 0.7f),
             new Vector3(0, -0.162f, 0), new Vector3(0, -0.31f, 0));
 
-        yield return new WaitForSeconds(0.03f);
+        yield return new WaitForSeconds(scaleTime);
         
         MoveSmooth(difference, currentHeight);
         RotateSmooth(angle);
