@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private AnimationCurve jumpCurve;
     [SerializeField] private AnimationCurve rotateCurve;
+    [SerializeField] private AnimationCurve scaleCurve;
 
     [SerializeField] private float jumpTime = 0.3f;
     //private GameObject currentTerrainJumpIn;
@@ -17,7 +18,8 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerControllerStart()
     {
-        //currentTerrainJumpIn = terrainGenerator.CurrentTerrainJumpIn(currentX);
+        float currentHeight = Height(terrainGenerator.CurrentTerrainJumpIn(currentX));
+        gameObject.transform.position = new Vector3(0, currentHeight, 0);
     }
 
     private void Update()
@@ -42,43 +44,64 @@ public class PlayerController : MonoBehaviour
         {
             MoveCharacter(new Vector3(0, 0, 1),270);
         }
-        
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            flagContainer.flag = true;
+        }
 
     }
 
     private void MoveCharacter(Vector3 difference, float angle)
     {
         //audioSource.Play();
-        //animator.SetTrigger("hop");
-        //transform.position = Vector3.Lerp(transform.position, transform.position + difference, Time.deltaTime * speed);
         float currentHeight = Height(terrainGenerator.CurrentTerrainJumpIn(currentX));
+        StartCoroutine(PLayerMoving(difference, currentHeight,angle));
+        
+        terrainGenerator.SpawnTerrain(false, transform.position);
+    }
+    private Extns.StopCouroutine flagContainer = new Extns.StopCouroutine();
+    IEnumerator PLayerMoving(Vector3 difference, float currentHeight , float angle)
+    {
+        var childObject = gameObject.transform.GetChild(0);
+        IEnumerator TweenScale(
+            Vector3 startScale, Vector3 targetScale, 
+            Vector3 startPosition, Vector3 targetPosition)
+        {
+            yield return 0.03f.ScaleObject(
+                (s) => childObject.localScale = s, startScale, targetScale,
+                (p) => childObject.localPosition = p, startPosition, targetPosition,
+                scaleCurve, flagContainer);
+        }
+
+        yield return TweenScale(new Vector3(0.5f, 0.5f, 0.5f), new Vector3(0.5f, 0.3f, 0.7f),
+            new Vector3(0, -0.162f, 0), new Vector3(0, -0.31f, 0));
+
+        yield return new WaitForSeconds(0.03f);
         
         MoveSmooth(difference, currentHeight);
         RotateSmooth(angle);
         
-        terrainGenerator.SpawnTerrain(false, transform.position);
+        yield return TweenScale(new Vector3(0.5f, 0.3f, 0.7f), new Vector3(0.5f, 0.5f, 0.5f),
+            new Vector3(0, -0.31f, 0), new Vector3(0, -0.162f, 0));
+        
+        yield return new WaitForSeconds(jumpTime);
+   
+        
     }
-
     void MoveSmooth(Vector3 difference, float height)
     {
         var newPosition = transform.position + difference;
         newPosition = new Vector3(newPosition.x, height, newPosition.z);
         
         StartCoroutine(jumpTime.Tweeng((p) => gameObject.transform.position = p, 
-            gameObject.transform.position, newPosition, jumpCurve,0));
+            gameObject.transform.position, newPosition, jumpCurve,flagContainer));
 
     }
     void RotateSmooth(float angle)
     {
-        if (gameObject.transform.eulerAngles.y != angle)
-        {
-            float deltaAngle = Mathf.DeltaAngle(gameObject.transform.eulerAngles.y, angle); // tính góc nhỏ nhất từ góc ban đầu đến góc cần quay tới
-            Debug.Log(1);
-            var targetAngle = gameObject.transform.eulerAngles + new Vector3(0, deltaAngle, 0);
-        
-            StartCoroutine(jumpTime.Tweeng((p) => gameObject.transform.eulerAngles = p, 
-                gameObject.transform.eulerAngles,targetAngle , rotateCurve));
-        }
+        if (gameObject.transform.eulerAngles.y == angle) return;
+        StartCoroutine(jumpTime.TweengMinAngleRotation((p) => gameObject.transform.eulerAngles = p, 
+            gameObject.transform.eulerAngles, new Vector3(0,angle,0) , rotateCurve,flagContainer));
     }
 
     float Height(GameObject currentTerrainJumpIn)

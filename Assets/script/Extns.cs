@@ -56,12 +56,12 @@ public static class Extns
         action.Invoke();
     }
     public static IEnumerator Tweeng(this float duration,
-        System.Action<Vector3> var, Vector3 aa, Vector3 zz, AnimationCurve curve, float ID)
+        System.Action<Vector3> var, Vector3 aa, Vector3 zz, AnimationCurve curve, StopCouroutine stopCouroutine)
     {
         float sT = Time.time;
         float eT = sT + duration;
 
-        while (Time.time < eT)
+        while (Time.time < eT || stopCouroutine.flag)
         {
             float t = (Time.time - sT) / duration;
             float heightMultiplier = curve.Evaluate(t);
@@ -71,28 +71,47 @@ public static class Extns
 
         var(zz);
     }
-    public static IEnumerator TweengRotation(this float duration, System.Action<Vector3> var, Vector3 startEulerAngles, Vector3 targetEulerAngles, AnimationCurve curve)
+    public static IEnumerator TweengMinAngleRotation(this float duration, System.Action<Vector3> var, Vector3 startEulerAngles, Vector3 targetEulerAngles, AnimationCurve curve, StopCouroutine stopCouroutine)
     {
         float sT = Time.time;
         float eT = sT + duration;
 
-        while (Time.time < eT)
+        while (Time.time < eT || stopCouroutine.flag)
         {
             float t = (Time.time - sT) / duration;
             float deltaAngleX = Mathf.DeltaAngle(startEulerAngles.x, targetEulerAngles.x);
             float deltaAngleY = Mathf.DeltaAngle(startEulerAngles.y, targetEulerAngles.y);
             float deltaAngleZ = Mathf.DeltaAngle(startEulerAngles.z, targetEulerAngles.z);
-
-            Vector3 deltaAngles = new Vector3(
-                Mathf.SmoothStep(0f, deltaAngleX, t),
-                Mathf.SmoothStep(0f, deltaAngleY, t),
-                Mathf.SmoothStep(0f, deltaAngleZ, t)
-            );
-
-            var(deltaAngles);
+            
+            targetEulerAngles = startEulerAngles + new Vector3(deltaAngleX, deltaAngleY, deltaAngleZ);
+            
+            var(Vector3.Lerp(startEulerAngles, targetEulerAngles, curve.Evaluate(Mathf.SmoothStep(0f, 1f, t))));
             yield return null;
         }
 
         var(targetEulerAngles);
+
+        var(targetEulerAngles);
+    }
+    public static IEnumerator ScaleObject(this float duration,
+        System.Action<Vector3> initialScale,Vector3 startScale, Vector3 targetScale, System.Action<Vector3> initialPosition, Vector3 startPosition, Vector3 targetPoint, AnimationCurve curve, StopCouroutine stopCouroutine)
+    {
+   
+        float startTime = Time.time;
+
+        while (Time.time < startTime + duration || stopCouroutine.flag)
+        {
+            float t = (Time.time - startTime) / duration;
+            initialScale(Vector3.Lerp(startScale, targetScale, curve.Evaluate(t)));
+            initialPosition(Vector3.Lerp(startPosition, targetPoint, curve.Evaluate(t)));
+            yield return null;
+        }
+
+        initialScale(targetScale);
+        initialPosition(targetPoint);
+    }
+    public class StopCouroutine
+    {
+        public bool flag = false;
     }
 }
