@@ -115,7 +115,6 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
     [Header("OFFER FOR TRACK")]
-    [SerializeField] private GameObject light;
     [SerializeField] private List<GameObject> TrainInstancePoint;
 
     public void TrackObstacle(GameObject terrain)
