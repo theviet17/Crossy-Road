@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets/Animation/animationcontroller.cs" />
+     <Compile Include="Assets/PlayerController.cs" />
      <Compile Include="Assets/script/destroystartpoint.cs" />
      <Compile Include="Assets/script/Vehicle.cs" />
      <Compile Include="Assets/script/reng.cs" />
@@ -51,15 +52,15 @@
      <Compile Include="Assets/script/KillPlayerOnTouch.cs" />
      <Compile Include="Assets/script/Player.cs" />
      <Compile Include="Assets/script/VehicleSpawner.cs" />
+     <Compile Include="Assets/GameManager.cs" />
      <Compile Include="Assets/script/TerrainData.cs" />
      <Compile Include="Assets/script/fly.cs" />
      <Compile Include="Assets/script/uicontrol.cs" />
      <Compile Include="Assets/script/canpasstrigger.cs" />
+     <Compile Include="Assets/script/Extns.cs" />
      <Compile Include="Assets/script/FollowPlayer.cs" />
      <Compile Include="Assets/script/destroyvehicle.cs" />
-     <Compile Include="Assets/PlayerController.cs" />
-     <Compile Include="Assets/script/Extns.cs" />
-     <Compile Include="Assets/GameManager.cs" />
+     <Compile Include="Assets/MovingObjectInstancePoint.cs" />
      <Folder Include="Assets" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
@@ -745,6 +746,9 @@
      <Reference Include="Unity.VSCode.Editor">
      <HintPath>/Users/mac/Downloads/Crossy-Road/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.2D.Tilemap.Editor">
+     <HintPath>/Users/mac/Downloads/Crossy-Road/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Postprocessing.Runtime">
      <HintPath>/Users/mac/Downloads/Crossy-Road/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
      </Reference>
@@ -777,9 +781,6 @@
      </Reference>
      <Reference Include="UnityEngine.UI">
      <HintPath>/Users/mac/Downloads/Crossy-Road/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.2D.Tilemap.Editor">
-     <HintPath>/Users/mac/Downloads/Crossy-Road/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>

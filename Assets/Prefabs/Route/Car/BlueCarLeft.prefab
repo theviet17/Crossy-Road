@@ -178,10 +178,10 @@ GameObject:
   - component: {fileID: 8867161427322611259}
   - component: {fileID: 82435749385648732}
   - component: {fileID: 7376298808645622264}
-  - component: {fileID: 8794624473932800391}
   - component: {fileID: 6607952622062308346}
+  - component: {fileID: 870171382830503388}
   m_Layer: 0
-  m_Name: bluecar
+  m_Name: BlueCarLeft
   m_TagString: die
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,24 +265,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.9493225, z: 1.0473981}
-  m_Center: {x: 0, y: 0.47466114, z: -0.023699332}
---- !u!54 &8794624473932800391
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7597554804249577163}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Size: {x: 1, y: 4.4187126, z: 1.0552894}
+  m_Center: {x: 0, y: 1.7093563, z: -0.0039702146}
 --- !u!82 &6607952622062308346
 AudioSource:
   m_ObjectHideFlags: 0
@@ -379,3 +363,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &870171382830503388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7597554804249577163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29ace9b85ceb744f8a3aa1a8c84a0aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed:
+    minValue: 5
+    maxValue: 10
+  distance: -30

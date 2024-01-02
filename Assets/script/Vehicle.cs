@@ -4,27 +4,46 @@ using UnityEngine;
 
 public class Vehicle : MonoBehaviour
 {
-
-    [SerializeField] private float minspeed;
-    [SerializeField] private float maxspeed;
-
-    public bool isLog;
+    
+    public float distance;
+    [HideInInspector] public float movingSpeed;
     void Start()
     {
-        //collision.gameObject.SetActive(false);
+        StartCoroutine(Moving(movingSpeed));
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator Moving(float time)
     {
-        transform.Translate(Vector3.forward * -(Random.Range(minspeed, maxspeed)) * Time.deltaTime);
-        if (transform.position.y <= -1)
-        {
-            Destroy(gameObject);
-        }
-       
-
+        StartCoroutine(Tweeng(time,(p) => gameObject.transform.position = p,
+            gameObject.transform.position, gameObject.transform.position + new Vector3(0, 0, distance)));
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject);
     }
+    public IEnumerator Tweeng(float duration,
+        System.Action<Vector3> var, Vector3 aa, Vector3 zz)
+    {
+        float sT = Time.time;
+        float eT = sT + duration;
+
+        while (Time.time < eT)
+        {
+            float t = (Time.time - sT) / duration;
+            var(Vector3.Lerp(aa, zz, Mathf.SmoothStep(0f, 1f, t)));
+            yield return null;
+        }
+
+        var(zz);
+    }
+    // void Update()
+    // {
+    //     transform.Translate(Vector3.forward * (-(Random.Range(minspeed, maxspeed)) * Time.deltaTime));
+    //     if (transform.position.y <= -1)
+    //     {
+    //         Destroy(gameObject);
+    //     }
+    //    
+    //
+    // }
    
     private void OnTriggerEnter(Collider collision)
     {

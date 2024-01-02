@@ -111,8 +111,8 @@ public class PlayerController : MonoBehaviour
         //Track = 1.086
         //Grass = 1
         //Water = 0.871
-        string terrainType = currentTerrainJumpIn.tag;
-        switch (terrainType)
+        string tag = currentTerrainJumpIn.tag;
+        switch (tag)
         {
             case "Road":
                 return 0.931f;

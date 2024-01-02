@@ -235,10 +235,10 @@ public class Player : MonoBehaviour
     {
         if(collision.collider.GetComponent<Vehicle>()!= null)
         {
-            if (collision.collider.GetComponent<Vehicle>().isLog)
-            {
-               transform.parent = collision.collider.transform;
-            }
+            // if (collision.collider.GetComponent<Vehicle>().isLog)
+            // {
+            //    transform.parent = collision.collider.transform;
+            // }
         }
         else
         {
@@ -255,10 +255,10 @@ public class Player : MonoBehaviour
     {
         if (collision.collider.GetComponent<Vehicle>() != null)
         {
-            if (collision.collider.GetComponent<Vehicle>().isLog)
-            {
-                transform.parent = null;
-            }
+            // if (collision.collider.GetComponent<Vehicle>().isLog)
+            // {
+            //     transform.parent = null;
+            // }
         }
         
     }

@@ -95,10 +95,10 @@ GameObject:
   - component: {fileID: 541580188372840220}
   - component: {fileID: 9056377084710663035}
   - component: {fileID: 1934164881296298207}
-  - component: {fileID: 470239432230742176}
   - component: {fileID: 2827770181158470365}
+  - component: {fileID: -6371892885496873213}
   m_Layer: 0
-  m_Name: truckred
+  m_Name: RedTruckRight
   m_TagString: die
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,24 +181,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 3.2807696, z: 1.2358764}
-  m_Center: {x: -0, y: 1.1403846, z: -0.09571516}
---- !u!54 &470239432230742176
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577816563767955436}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Size: {x: 1.652827, y: 7.970042, z: 1.2358761}
+  m_Center: {x: 0.11941983, y: 3.395706, z: -0.061404735}
 --- !u!82 &2827770181158470365
 AudioSource:
   m_ObjectHideFlags: 0
@@ -295,3 +279,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6371892885496873213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577816563767955436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29ace9b85ceb744f8a3aa1a8c84a0aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed:
+    minValue: 5
+    maxValue: 10
+  distance: 30
