@@ -4,47 +4,53 @@ using UnityEngine;
 
 public class Vehicle : MonoBehaviour
 {
-    
-    public float distance;
+    public float rayCastDistance = 2;
+    public LayerMask car;
+    public float lifeTime = 5;
+    Vector3 origin;
+    Vector3 direction;
+    float distance;
     [HideInInspector] public float movingSpeed;
-    void Start()
+    private void Awake()
     {
-        StartCoroutine(Moving(movingSpeed));
+        Destroy(gameObject, lifeTime);
     }
+    //void Start()
+    //{
+    //    StartCoroutine(Moving(movingSpeed));
+    //}
 
-    IEnumerator Moving(float time)
-    {
-        StartCoroutine(Tweeng(time,(p) => gameObject.transform.position = p,
-            gameObject.transform.position, gameObject.transform.position + new Vector3(0, 0, distance)));
-        yield return new WaitForSeconds(time);
-        Destroy(gameObject);
-    }
-    public IEnumerator Tweeng(float duration,
-        System.Action<Vector3> var, Vector3 aa, Vector3 zz)
-    {
-        float sT = Time.time;
-        float eT = sT + duration;
+    //IEnumerator Moving(float time)
+    //{
+    //    StartCoroutine(time.Tweeng((p) => gameObject.transform.position = p,
+    //        gameObject.transform.position, gameObject.transform.position + new Vector3(0, 0, distance)));
+    //    yield return new WaitForSeconds(time);
+    //    Destroy(gameObject);
+    //}
 
-        while (Time.time < eT)
+    void Update()
+    {
+        origin = transform.position;
+        direction = (movingSpeed > 0 ? 1 : -1) * transform.forward;
+        RaycastHit hit;
+        if (Physics.Raycast(origin, direction, out hit, rayCastDistance, car, QueryTriggerInteraction.UseGlobal))
         {
-            float t = (Time.time - sT) / duration;
-            var(Vector3.Lerp(aa, zz, Mathf.SmoothStep(0f, 1f, t)));
-            yield return null;
-        }
+            if (hit.collider != null && hit.collider.gameObject != this.gameObject)
+            {
+                Debug.Log("Vachamvoixephiatruoc");
+                rayCastDistance = 0;
+                movingSpeed = hit.collider.gameObject.GetComponent<Vehicle>().movingSpeed;
+            }
 
-        var(zz);
+        }
+        transform.Translate(Vector3.forward * movingSpeed * Time.deltaTime);
     }
-    // void Update()
-    // {
-    //     transform.Translate(Vector3.forward * (-(Random.Range(minspeed, maxspeed)) * Time.deltaTime));
-    //     if (transform.position.y <= -1)
-    //     {
-    //         Destroy(gameObject);
-    //     }
-    //    
-    //
-    // }
-   
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Debug.DrawLine(origin, origin + direction * 2);
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         

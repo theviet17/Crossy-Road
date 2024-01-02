@@ -65,6 +65,7 @@ public class TerrainGenerator : MonoBehaviour
                 RoadObstacle(terrain);
                 break;
             case "Track":
+                TrackObstacle(terrain);
                 break;
             case "Grass":
                 break;
@@ -73,14 +74,16 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
 
+   
+    [Header("OFFER FOR ROAD")]
+    [SerializeField] private GameObject roadMarkings;
+    [SerializeField] private List<GameObject> VehicleInstancePoint;
+
     public void RoadObstacle(GameObject terrain)
     {
         GenerateRoadMarkings(terrain);
         GenerateVehicleInstancePoint(terrain);
     }
-    [Header("Offer for road")]
-    [SerializeField] private GameObject roadMarkings;
-    [SerializeField] private List<GameObject> VehicleInstancePoint;
     public void GenerateRoadMarkings(GameObject terrain)
     {
         var previousTerain = currentTerrains[currentTerrains.IndexOf(terrain) - 1];
@@ -99,15 +102,53 @@ public class TerrainGenerator : MonoBehaviour
         if (randomNumber % 2 == 0)
         {
             var vhip = Instantiate(VehicleInstancePoint[0]);
+            vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
             vhip.transform.SetParent(terrain.transform);
             vhip.transform.localPosition = new Vector3(0, 0.58f, 0.3f);
         }
         else
         {
             var vhip = Instantiate(VehicleInstancePoint[1]);
+            vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
             vhip.transform.SetParent(terrain.transform);
             vhip.transform.localPosition = new Vector3(0, 0.58f, -0.3f);
         }
+    }
+    [Header("OFFER FOR TRACK")]
+    [SerializeField] private GameObject light;
+    [SerializeField] private List<GameObject> TrainInstancePoint;
+
+    public void TrackObstacle(GameObject terrain)
+    {
+        GenerateTrainInstancePoint(terrain);
+    }
+    public void GenerateTrainInstancePoint(GameObject terrain)
+    {
+        int randomNumber = Random.Range(0, 100);
+        if (randomNumber % 2 == 0)
+        {
+            var vhip = Instantiate(TrainInstancePoint[0]);
+            vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
+            vhip.transform.SetParent(terrain.transform);
+            vhip.transform.localPosition = new Vector3(0, 1.3f, 0.3f);
+
+            WarningLightRegister(terrain, vhip.GetComponent<MovingObjectInstancePoint>());
+        }
+        else
+        {
+            var vhip = Instantiate(TrainInstancePoint[1]);
+            vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
+            vhip.transform.SetParent(terrain.transform);
+            vhip.transform.localPosition = new Vector3(0, 1.3f, -0.3f);
+
+            WarningLightRegister(terrain, vhip.GetComponent<MovingObjectInstancePoint>());
+        }
+    }
+    public void WarningLightRegister(GameObject terrain , MovingObjectInstancePoint movingObjectInstancePoint)
+    {
+        var wrl = terrain.transform.GetChild(0).GetComponent<WarningLight>();
+        wrl.movingObjectInstancePoint = movingObjectInstancePoint;
+        wrl.Register();
     }
 
 }

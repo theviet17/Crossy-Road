@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44354135, g: 0.49284917, b: 0.57243925, a: 1}
+  m_IndirectSpecularColor: {r: 0.44354156, g: 0.4928496, b: 0.57243997, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10071,9 +10071,23 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 955677481, guid: bcfd3ec7b5446a0428729092bbe7429c, type: 3}
+      propertyPath: TrainInstancePoint.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 955677481, guid: bcfd3ec7b5446a0428729092bbe7429c, type: 3}
       propertyPath: VehicleInstancePoint.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 955677481, guid: bcfd3ec7b5446a0428729092bbe7429c, type: 3}
+      propertyPath: TrainInstancePoint.Array.data[0]
+      value: 
+      objectReference: {fileID: 4336771795584181936, guid: 87d6df8dbac6dd94d8a23ba32d7b0b4a,
+        type: 3}
+    - target: {fileID: 955677481, guid: bcfd3ec7b5446a0428729092bbe7429c, type: 3}
+      propertyPath: TrainInstancePoint.Array.data[1]
+      value: 
+      objectReference: {fileID: 8488384897459176065, guid: 98950ef723ab27c4bbdeec51f9b36c52,
+        type: 3}
     - target: {fileID: 955677481, guid: bcfd3ec7b5446a0428729092bbe7429c, type: 3}
       propertyPath: VehicleInstancePoint.Array.data[0]
       value: 

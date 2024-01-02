@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3064269044645911588}
   - component: {fileID: 6915330018039875141}
   - component: {fileID: 798383365542159859}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,9 +180,9 @@ GameObject:
   - component: {fileID: 8619711165517591731}
   - component: {fileID: 5365639745713202865}
   - component: {fileID: -8387492425413277312}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RedTruckLeft
-  m_TagString: die
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -375,7 +375,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29ace9b85ceb744f8a3aa1a8c84a0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed:
-    minValue: 5
-    maxValue: 10
   distance: -30
+  rayCastDistance: 2
+  car:
+    serializedVersion: 2
+    m_Bits: 128
+  movingSpeed: 0

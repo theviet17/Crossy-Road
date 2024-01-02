@@ -7,38 +7,64 @@ using UnityEngine;
 [System.Serializable]
 public struct Between
 {
-   public float minValue;
-   public float maxValue;
+    public float minValue;
+    public float maxValue;
 
-   public float RandomValue()
-   {
-      return UnityEngine.Random.Range(minValue, maxValue);
-   }
+    public float RandomValue()
+    {
+        return UnityEngine.Random.Range(minValue, maxValue);
+    }
 }
 public class MovingObjectInstancePoint : MonoBehaviour
 {
-   public List<GameObject> objects;
-   public Between timeDelay;
-   public Between baseSpeed;
-   private void Start()
-   {
-      StartCoroutine(InstanceObject( objects[UnityEngine.Random.Range(0,objects.Count)]));
-   }
+    public List<GameObject> objects;
+    public Between timeDelay;
+    public Between baseSpeed;
 
-   IEnumerator InstanceObject(GameObject slelectedObject)
-   {
-      Instance(slelectedObject); // frist time Instance
-      while (true)
-      {
-         yield return new WaitForSeconds(timeDelay.RandomValue());
-         Instance(slelectedObject);
-      }
-   }
+    public bool rightDrection;
 
-   void Instance(GameObject slelectedObject)
-   {
-      var vhc = Instantiate(slelectedObject, gameObject.transform.localToWorldMatrix.GetPosition(), Quaternion.identity);
-      var vehicle = vhc.GetComponent<Vehicle>();
-      vehicle.movingSpeed = baseSpeed.RandomValue();
-   }
+    public bool isTrain = false;
+    public event Action instance;
+    [HideInInspector] public Transform terrain;
+    private void Start()
+    {
+        StartCoroutine(InstanceObject(objects[UnityEngine.Random.Range(0, objects.Count)]));
+    }
+
+    IEnumerator InstanceObject(GameObject slelectedObject)
+    {
+        if (!isTrain)
+        {
+            Instance(slelectedObject); // frist time Instance
+        }
+        while (true)
+        {
+            yield return new WaitForSeconds(timeDelay.RandomValue());
+            EventInstance();
+            if (isTrain)
+            {
+                yield return new WaitForSeconds(1);
+                Instance(slelectedObject);
+            }
+            else
+            {
+                Instance(slelectedObject);
+            }
+            
+        }
+    }
+
+    void Instance(GameObject slelectedObject)
+    {
+        var vhc = Instantiate(slelectedObject, gameObject.transform.localToWorldMatrix.GetPosition(), Quaternion.identity);
+        vhc.transform.SetParent(terrain.transform);
+        var vehicle = vhc.GetComponent<Vehicle>();
+        var randomSpeed = baseSpeed.RandomValue();
+        vehicle.movingSpeed = rightDrection ? randomSpeed : -1 * randomSpeed;
+        
+    }
+    public void EventInstance()
+    {
+        instance?.Invoke();
+    }
 }

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4114680315521326246}
   - component: {fileID: 356785729674137252}
   - component: {fileID: 475914458925905623}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PurpleCarLeft
-  m_TagString: die
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,6 +209,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: -30
+  rayCastDistance: 2
+  car:
+    serializedVersion: 2
+    m_Bits: 128
   movingSpeed: 0
 --- !u!1001 &1944322196930653542
 PrefabInstance:
@@ -291,6 +295,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: xengantim
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1160f9e18a7b7da4a826dce71ee47cbc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 1160f9e18a7b7da4a826dce71ee47cbc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1160f9e18a7b7da4a826dce71ee47cbc, type: 3}
