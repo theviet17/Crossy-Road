@@ -102,17 +102,11 @@ public class TerrainGenerator : MonoBehaviour
         int randomNumber = Random.Range(0, 100);
         if (randomNumber % 2 == 0)
         {
-            var vhip = Instantiate(VehicleInstancePoint[0]);
-            vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
-            vhip.transform.SetParent(terrain.transform);
-            vhip.transform.localPosition = new Vector3(0, 0.58f, 0.3f);
+            Instance(terrain, VehicleInstancePoint[0],  new Vector3(0, 0.58f, 0.3f));
         }
         else
         {
-            var vhip = Instantiate(VehicleInstancePoint[1]);
-            vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
-            vhip.transform.SetParent(terrain.transform);
-            vhip.transform.localPosition = new Vector3(0, 0.58f, -0.3f);
+            Instance(terrain, VehicleInstancePoint[1],  new Vector3(0, 0.58f, -0.3f));
         }
     }
     [Header("OFFER FOR TRACK")]
@@ -127,20 +121,13 @@ public class TerrainGenerator : MonoBehaviour
         int randomNumber = Random.Range(0, 100);
         if (randomNumber % 2 == 0)
         {
-            var vhip = Instantiate(TrainInstancePoint[0]);
-            vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
-            vhip.transform.SetParent(terrain.transform);
-            vhip.transform.localPosition = new Vector3(0, 1.3f, 0.3f);
+            var vhip = Instance(terrain, TrainInstancePoint[0], new Vector3(0, 1.3f, 0.3f));
 
             WarningLightRegister(terrain, vhip.GetComponent<MovingObjectInstancePoint>());
         }
         else
         {
-            var vhip = Instantiate(TrainInstancePoint[1]);
-            vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
-            vhip.transform.SetParent(terrain.transform);
-            vhip.transform.localPosition = new Vector3(0, 1.3f, -0.3f);
-
+            var vhip = Instance(terrain, TrainInstancePoint[1], new Vector3(0, 1.3f, -0.3f));
             WarningLightRegister(terrain, vhip.GetComponent<MovingObjectInstancePoint>());
         }
     }
@@ -173,28 +160,22 @@ public class TerrainGenerator : MonoBehaviour
          
         if (randomNumber % 2 == 0)
         {
-            var vhip = Instantiate(PlankInstancePoint[0]);
-            vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
-            vhip.transform.SetParent(terrain.transform);
-            vhip.transform.localPosition = new Vector3(0, -0.05f, 0.3f);
+            Instance(terrain, PlankInstancePoint[0], new Vector3(0, -0.05f, 0.3f));
             CurrentPlankType = 0;
         }
         else
         {
-            var vhip = Instantiate(PlankInstancePoint[1]);
-            vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
-            vhip.transform.SetParent(terrain.transform);
-            vhip.transform.localPosition = new Vector3(0, -0.05f, -0.3f);
+            Instance(terrain, PlankInstancePoint[1], new Vector3(0, -0.05f, -0.3f));
             CurrentPlankType = 1;
         }
     }
 
     public MovingObjectInstancePoint Instance(GameObject terrain,GameObject gameObject, Vector3 position)
     {
-        var vhip = Instantiate(PlankInstancePoint[1]);
-        vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
+        var vhip = Instantiate(gameObject);
+        vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrain.transform;
         vhip.transform.SetParent(terrain.transform);
-        vhip.transform.localPosition = new Vector3(0, -0.05f, -0.3f);
+        vhip.transform.localPosition = position;
         return vhip.GetComponent<MovingObjectInstancePoint>();
     }
 

@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2504455948166751518}
   - component: {fileID: 8089363767827251239}
   - component: {fileID: 1674190958238751081}
-  m_Layer: 7
+  - component: {fileID: 1335672132167786144}
+  m_Layer: 8
   m_Name: Wooden Plank_2
-  m_TagString: Untagged
+  m_TagString: Plank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,8 +100,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6028633, y: 0.17044309, z: 1.8063526}
-  m_Center: {x: 0.016939163, y: 0.5537472, z: 0.5549669}
+  m_Size: {x: 0.6028633, y: 0.6043794, z: 1.8063526}
+  m_Center: {x: 0.016939163, y: 0.77071637, z: 0.5549669}
 --- !u!114 &1674190958238751081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,10 +117,26 @@ MonoBehaviour:
   rayCastDistance: 1.2
   car:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   lifeTime: 8
   movingSpeed: 0
   isPlank: 0
+--- !u!114 &1335672132167786144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976839409352476447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48c8776a9b2143e78caea5effa86bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentJumpPoint: 0
+  JumpPoint:
+  - {fileID: 8984785315232392886}
+  - {fileID: 7536694043972056611}
 --- !u!1 &3806697676869490866
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,8 +246,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7536694043972056611}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.11, y: 1.0570002, z: 0.07000005}
-  m_LocalScale: {x: 1, y: 1.0126582, z: 1}
+  m_LocalPosition: {x: 0.11, y: 1.057, z: 0.07000005}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6314547611160974162}
@@ -251,7 +268,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7536694043972056611}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -312,8 +329,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8984785315232392886}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.11, y: 1.0570002, z: 1.07}
-  m_LocalScale: {x: 1, y: 1.0126582, z: 1}
+  m_LocalPosition: {x: 0.11, y: 1.057, z: 1.07}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6314547611160974162}
@@ -334,7 +351,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8984785315232392886}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

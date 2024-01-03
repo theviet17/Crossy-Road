@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -14,54 +15,120 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float jumpTime = 0.3f;
     [SerializeField] private float scaleTime = 0.03f;
-    //private GameObject currentTerrainJumpIn;
+
+    private bool canJump = true;
+    
+    private GameObject rayCastPoint;
+    private Vector3 direction;
+    private bool onPlank = false;
+    public LayerMask plank;
+    private GameObject planket;
+ 
     private float currentX = 0;
 
     public void PlayerControllerStart()
     {
         float currentHeight = Height(terrainGenerator.CurrentTerrainJumpIn(currentX));
         gameObject.transform.position = new Vector3(0, currentHeight, 0);
+        rayCastPoint = gameObject.transform.GetChild(1).gameObject;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (canJump)
         {
-            currentX++;
-            MoveCharacter(new Vector3(1, 0, 0), 0);
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                currentX++;
+                if (planket != null)
+                {
+                    planket.GetComponent<Planket>().currentJumpPoint = 100;
+                }
+                direction = new Vector3(1, 0, 0);
+                MoveCharacter(new Vector3(1, 0, 0), 0);
            
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            currentX--;
-            MoveCharacter(new Vector3(-1, 0, 0),180);
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                currentX--;
+                if (planket != null)
+                {
+                    planket.GetComponent<Planket>().currentJumpPoint = 100;
+                }
+                direction = new Vector3(-1, 0, 0);
+                MoveCharacter(new Vector3(-1, 0, 0),180);
             
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            MoveCharacter(new Vector3(0, 0, -1),90);
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            MoveCharacter(new Vector3(0, 0, 1),270);
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            flagContainer.flag = true;
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                direction = new Vector3(0, 0, -1);
+                if (planket != null)
+                {
+                    planket.GetComponent<Planket>().currentJumpPoint++;
+                }
+                MoveCharacter(new Vector3(0, 0, -1),90);
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                if (planket != null)
+                {
+                    planket.GetComponent<Planket>().currentJumpPoint--;
+                }
+                direction = new Vector3(0, 0, 1);
+                MoveCharacter(new Vector3(0, 0, 1),270);
+            }
         }
 
+        if (onPlank)
+        {
+            transform.parent = planket.transform;
+        }
+        else
+        {
+            transform.parent = null;
+        }
+        
     }
 
     private void MoveCharacter(Vector3 difference, float angle)
     {
+        canJump = false;
+        float currentHeight = 1;
+        bool stillOnPlank = false;
+        
+        if (onPlank)
+        {
+            if (StillOnPlanket())
+            {
+                stillOnPlank = true;
+            }
+        }
+        else
+        {
+            if (CanJumpOnPlank())
+            {
+                stillOnPlank = true;
+                
+                CheckNearestJumpPoint();
+                
+            }
+            else
+            {
+                currentHeight = Height(terrainGenerator.CurrentTerrainJumpIn(currentX));
+            }
+
+        }
         //audioSource.Play();
-        float currentHeight = Height(terrainGenerator.CurrentTerrainJumpIn(currentX));
-        StartCoroutine(PLayerMoving(difference, currentHeight,angle));
+           
+        
+        StartCoroutine(PLayerMoving(difference, currentHeight,angle,stillOnPlank));
         
         terrainGenerator.SpawnTerrain(false, transform.position);
+    
     }
+    
     private Extns.StopCouroutine flagContainer = new Extns.StopCouroutine();
-    IEnumerator PLayerMoving(Vector3 difference, float currentHeight , float angle)
+    IEnumerator PLayerMoving(Vector3 difference, float currentHeight , float angle, bool stillOnPlank)
     {
         var childObject = gameObject.transform.GetChild(0);
         IEnumerator TweenScale(
@@ -71,7 +138,7 @@ public class PlayerController : MonoBehaviour
             yield return scaleTime.ScaleObject(
                 (s) => childObject.localScale = s, startScale, targetScale,
                 (p) => childObject.localPosition = p, startPosition, targetPosition,
-                scaleCurve, flagContainer);
+                scaleCurve);
         }
 
         yield return TweenScale(new Vector3(0.5f, 0.5f, 0.5f), new Vector3(0.5f, 0.3f, 0.7f),
@@ -79,30 +146,49 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(scaleTime);
         
-        MoveSmooth(difference, currentHeight);
+        MoveSmooth(difference, currentHeight, stillOnPlank);
         RotateSmooth(angle);
         
         yield return TweenScale(new Vector3(0.5f, 0.3f, 0.7f), new Vector3(0.5f, 0.5f, 0.5f),
             new Vector3(0, -0.31f, 0), new Vector3(0, -0.162f, 0));
         
         yield return new WaitForSeconds(jumpTime);
-   
-        
+        canJump = true;
+        if (stillOnPlank)
+        {
+            onPlank = true;
+        }
+        else
+        {
+            onPlank = false;
+        }
     }
-    void MoveSmooth(Vector3 difference, float height)
+    void MoveSmooth(Vector3 difference, float height, bool stillOnPlank)
     {
-        var newPosition = transform.position + difference;
-        newPosition = new Vector3(newPosition.x, height, newPosition.z);
+        if (!stillOnPlank)
+        {
+            var newPosition = transform.position + difference;
+            newPosition = new Vector3(newPosition.x, height, newPosition.z);
         
-        StartCoroutine(jumpTime.Tweeng((p) => gameObject.transform.position = p, 
-            gameObject.transform.position, newPosition, jumpCurve,flagContainer));
+            StartCoroutine(jumpTime.ParabolJump((p) => gameObject.transform.position = p, 
+                gameObject.transform.position, newPosition, jumpCurve));
+        }
+        else
+        {
+            var plk = planket.GetComponent<Planket>();
+            var jumpPoint = plk.JumpPoint[plk.currentJumpPoint];
+            
+            StartCoroutine(jumpTime.ParabolJump((p) => gameObject.transform.position = p, 
+                gameObject.transform.position, jumpPoint.transform, jumpCurve));
+        }
+        
 
     }
     void RotateSmooth(float angle)
     {
         if (gameObject.transform.eulerAngles.y == angle) return;
         StartCoroutine(jumpTime.TweengMinAngleRotation((p) => gameObject.transform.eulerAngles = p, 
-            gameObject.transform.eulerAngles, new Vector3(0,angle,0) , rotateCurve,flagContainer));
+            gameObject.transform.eulerAngles, new Vector3(0,angle,0) , rotateCurve));
     }
 
     float Height(GameObject currentTerrainJumpIn)
@@ -122,7 +208,90 @@ public class PlayerController : MonoBehaviour
                 return 1f;
             case "Water":
                 return 0.871f;
+            case "Plank":
+                return 1f;
         }
         return 0;
     }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Debug.DrawLine(rayCastPoint.transform.position, rayCastPoint.transform.position + direction * 1);
+    }
+
+    public bool CanJumpOnPlank()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(rayCastPoint.transform.position, direction, out hit, 1, plank, QueryTriggerInteraction.UseGlobal))
+        {
+            planket = hit.transform.gameObject;
+            return true;
+        }
+        else
+        {
+            var nextTerrain = terrainGenerator.CurrentTerrainJumpIn(currentX);
+            if (nextTerrain.tag == "Water")
+            {
+                var direction = nextTerrain.transform.GetChild(2).GetComponent<MovingObjectInstancePoint>()
+                    .rightDrection;
+                var listPlank = nextTerrain.GetComponentsInChildren<Planket>().ToList();
+                for (int i = 0; i < listPlank.Count; i++)
+                {
+                    if (direction)
+                    {
+                        if (listPlank[i].gameObject.transform.transform.localToWorldMatrix.GetPosition().z >
+                            gameObject.transform.position.z)
+                        {
+                            listPlank.Remove(listPlank[i]);
+                        }
+                    }
+                    else
+                    {
+                        if (listPlank[i].gameObject.transform.transform.localToWorldMatrix.GetPosition().z <
+                            gameObject.transform.position.z)
+                        {
+                            listPlank.Remove(listPlank[i]);
+                        }
+                    }
+                }
+                float minDistance = 100;
+                for (int i = 0; i < listPlank.Count; i++)
+                {
+                    float distance = Vector3.Distance(gameObject.transform.position, listPlank[i].transform.localToWorldMatrix.GetPosition());
+                    if (minDistance > distance)
+                    {
+                        minDistance = distance;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+     public void CheckNearestJumpPoint()
+     {
+         var planket = this.planket.GetComponent<Planket>();
+         float minDistance = 100;
+         for (int i = 0; i < planket.JumpPoint.Count; i++)
+         {
+             float distance = Vector3.Distance(gameObject.transform.position, planket.JumpPoint[i].transform.localToWorldMatrix.GetPosition());
+             if (minDistance > distance)
+             {
+                 minDistance = distance;
+                 planket.currentJumpPoint = i;
+             }
+         }
+     }
+
+     public bool StillOnPlanket()
+     {
+         var planket = this.planket.GetComponent<Planket>();
+         if (planket.currentJumpPoint >= 0 && planket.currentJumpPoint <= planket.JumpPoint.Count - 1)
+         {
+             return true;
+         }
+
+         return false;
+     }
 }
