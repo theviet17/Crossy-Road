@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
         if (onPlank)
         {
-            transform.parent = planket.transform;
+            transform.parent = planket.transform.GetChild(0).transform;
         }
         else
         {
@@ -96,12 +96,9 @@ public class PlayerController : MonoBehaviour
         float currentHeight = 1;
         bool stillOnPlank = false;
         
-        if (onPlank)
+        if (onPlank && StillOnPlanket())
         {
-            if (StillOnPlanket())
-            {
-                stillOnPlank = true;
-            }
+            stillOnPlank = true;
         }
         else
         {
@@ -130,17 +127,6 @@ public class PlayerController : MonoBehaviour
     private Extns.StopCouroutine flagContainer = new Extns.StopCouroutine();
     IEnumerator PLayerMoving(Vector3 difference, float currentHeight , float angle, bool stillOnPlank)
     {
-        var childObject = gameObject.transform.GetChild(0);
-        IEnumerator TweenScale(
-            Vector3 startScale, Vector3 targetScale, 
-            Vector3 startPosition, Vector3 targetPosition)
-        {
-            yield return scaleTime.ScaleObject(
-                (s) => childObject.localScale = s, startScale, targetScale,
-                (p) => childObject.localPosition = p, startPosition, targetPosition,
-                scaleCurve);
-        }
-
         yield return TweenScale(new Vector3(0.5f, 0.5f, 0.5f), new Vector3(0.5f, 0.3f, 0.7f),
             new Vector3(0, -0.162f, 0), new Vector3(0, -0.31f, 0));
 
@@ -153,9 +139,11 @@ public class PlayerController : MonoBehaviour
             new Vector3(0, -0.31f, 0), new Vector3(0, -0.162f, 0));
         
         yield return new WaitForSeconds(jumpTime);
+
         canJump = true;
         if (stillOnPlank)
         {
+            planket.GetComponent<Planket>().Floating();
             onPlank = true;
         }
         else
@@ -163,13 +151,25 @@ public class PlayerController : MonoBehaviour
             onPlank = false;
         }
     }
+    IEnumerator TweenScale(
+            Vector3 startScale, Vector3 targetScale,
+            Vector3 startPosition, Vector3 targetPosition)
+    {
+        var childObject = gameObject.transform.GetChild(0);
+        yield return scaleTime.ScaleObject(
+            (s) => childObject.localScale = s, startScale, targetScale,
+            (p) => childObject.localPosition = p, startPosition, targetPosition,
+            scaleCurve);
+    }
     void MoveSmooth(Vector3 difference, float height, bool stillOnPlank)
     {
         if (!stillOnPlank)
         {
             var newPosition = transform.position + difference;
             newPosition = new Vector3(newPosition.x, height, newPosition.z);
-        
+
+            newPosition = onPlank ? new Vector3((float)Math.Floor(newPosition.x+0.5f), newPosition.y, newPosition.z) : newPosition;
+
             StartCoroutine(jumpTime.ParabolJump((p) => gameObject.transform.position = p, 
                 gameObject.transform.position, newPosition, jumpCurve));
         }
@@ -213,54 +213,41 @@ public class PlayerController : MonoBehaviour
         }
         return 0;
     }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Debug.DrawLine(rayCastPoint.transform.position, rayCastPoint.transform.position + direction * 1);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Debug.DrawLine(rayCastPoint.transform.position , rayCastPoint.transform.position  + direction * 1);
+    //}
 
     public bool CanJumpOnPlank()
     {
         RaycastHit hit;
+
         if (Physics.Raycast(rayCastPoint.transform.position, direction, out hit, 1, plank, QueryTriggerInteraction.UseGlobal))
         {
-            planket = hit.transform.gameObject;
-            return true;
+            if (planket == null || hit.collider.gameObject != planket.gameObject)
+            {
+                planket = hit.transform.gameObject;
+                return true;
+            }
         }
         else
         {
             var nextTerrain = terrainGenerator.CurrentTerrainJumpIn(currentX);
+
             if (nextTerrain.tag == "Water")
             {
-                var direction = nextTerrain.transform.GetChild(2).GetComponent<MovingObjectInstancePoint>()
-                    .rightDrection;
-                var listPlank = nextTerrain.GetComponentsInChildren<Planket>().ToList();
-                for (int i = 0; i < listPlank.Count; i++)
+                var moip = nextTerrain.transform.GetChild(2).GetComponent<MovingObjectInstancePoint>();
+                var plankSpeed = moip.rightDrection ? moip.plankSpeed : -1 * moip.plankSpeed;
+                var changingZ = plankSpeed * (jumpTime + scaleTime);
+                Debug.Log(changingZ);
+
+                if (Physics.Raycast(rayCastPoint.transform.position - new Vector3(0, 0, changingZ), direction, out hit, 1, plank, QueryTriggerInteraction.UseGlobal))
                 {
-                    if (direction)
+                    if (planket == null || hit.collider.gameObject != planket.gameObject)
                     {
-                        if (listPlank[i].gameObject.transform.transform.localToWorldMatrix.GetPosition().z >
-                            gameObject.transform.position.z)
-                        {
-                            listPlank.Remove(listPlank[i]);
-                        }
-                    }
-                    else
-                    {
-                        if (listPlank[i].gameObject.transform.transform.localToWorldMatrix.GetPosition().z <
-                            gameObject.transform.position.z)
-                        {
-                            listPlank.Remove(listPlank[i]);
-                        }
-                    }
-                }
-                float minDistance = 100;
-                for (int i = 0; i < listPlank.Count; i++)
-                {
-                    float distance = Vector3.Distance(gameObject.transform.position, listPlank[i].transform.localToWorldMatrix.GetPosition());
-                    if (minDistance > distance)
-                    {
-                        minDistance = distance;
+                        planket = hit.transform.gameObject;
+                        return true;
                     }
                 }
             }
@@ -269,7 +256,7 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-     public void CheckNearestJumpPoint()
+    public void CheckNearestJumpPoint()
      {
          var planket = this.planket.GetComponent<Planket>();
          float minDistance = 100;
@@ -291,7 +278,6 @@ public class PlayerController : MonoBehaviour
          {
              return true;
          }
-
          return false;
      }
 }
