@@ -24,6 +24,7 @@ public class MovingObjectInstancePoint : MonoBehaviour
     public bool rightDrection;
 
     public bool isTrain = false;
+    public bool isPlank = false;
     public event Action instance;
     [HideInInspector] public Transform terrain;
     private void Start()
@@ -56,12 +57,17 @@ public class MovingObjectInstancePoint : MonoBehaviour
 
     void Instance(GameObject slelectedObject)
     {
+        if (isPlank)
+        {
+            slelectedObject = objects[UnityEngine.Random.Range(0, objects.Count)];
+        }
         var vhc = Instantiate(slelectedObject, gameObject.transform.localToWorldMatrix.GetPosition(), Quaternion.identity);
         vhc.transform.SetParent(terrain.transform);
         var vehicle = vhc.GetComponent<Vehicle>();
         var randomSpeed = baseSpeed.RandomValue();
         vehicle.movingSpeed = rightDrection ? randomSpeed : -1 * randomSpeed;
-        
+        vehicle.isPlank = isPlank;
+
     }
     public void EventInstance()
     {

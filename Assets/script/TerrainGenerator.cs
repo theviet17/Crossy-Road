@@ -70,6 +70,7 @@ public class TerrainGenerator : MonoBehaviour
             case "Grass":
                 break;
             case "Water":
+                WaterObstacle(terrain);
                 break;
         }
     }
@@ -148,6 +149,53 @@ public class TerrainGenerator : MonoBehaviour
         var wrl = terrain.transform.GetChild(0).GetComponent<WarningLight>();
         wrl.movingObjectInstancePoint = movingObjectInstancePoint;
         wrl.Register();
+    }
+
+    [Header("OFFER FOR WATER")] 
+    private int CurrentPlankType = 0;
+    [SerializeField] private List<GameObject> PlankInstancePoint;
+    public void WaterObstacle(GameObject terrain)
+    {
+        GeneratePlankInstancePoint(terrain);
+    }
+    public void GeneratePlankInstancePoint(GameObject terrain)
+    {
+        var previousTerain = currentTerrains[currentTerrains.IndexOf(terrain) - 1];
+        int randomNumber = 0;
+        if (previousTerain.tag != terrain.tag)
+        {
+            randomNumber = Random.Range(0, 100);
+        }
+        else
+        {
+            randomNumber = CurrentPlankType == 0 ? 1 : 0;
+        }
+         
+        if (randomNumber % 2 == 0)
+        {
+            var vhip = Instantiate(PlankInstancePoint[0]);
+            vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
+            vhip.transform.SetParent(terrain.transform);
+            vhip.transform.localPosition = new Vector3(0, -0.05f, 0.3f);
+            CurrentPlankType = 0;
+        }
+        else
+        {
+            var vhip = Instantiate(PlankInstancePoint[1]);
+            vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
+            vhip.transform.SetParent(terrain.transform);
+            vhip.transform.localPosition = new Vector3(0, -0.05f, -0.3f);
+            CurrentPlankType = 1;
+        }
+    }
+
+    public MovingObjectInstancePoint Instance(GameObject terrain,GameObject gameObject, Vector3 position)
+    {
+        var vhip = Instantiate(PlankInstancePoint[1]);
+        vhip.GetComponent<MovingObjectInstancePoint>().terrain = terrainHolder;
+        vhip.transform.SetParent(terrain.transform);
+        vhip.transform.localPosition = new Vector3(0, -0.05f, -0.3f);
+        return vhip.GetComponent<MovingObjectInstancePoint>();
     }
 
 }

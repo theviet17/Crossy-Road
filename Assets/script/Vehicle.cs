@@ -11,6 +11,7 @@ public class Vehicle : MonoBehaviour
     Vector3 direction;
     float distance;
     [HideInInspector] public float movingSpeed;
+    [HideInInspector] public bool isPlank;
     private void Awake()
     {
         Destroy(gameObject, lifeTime);
@@ -30,7 +31,15 @@ public class Vehicle : MonoBehaviour
 
     void Update()
     {
-        origin = transform.position;
+        if (!isPlank)
+        {
+            origin = transform.position;
+        }
+        else
+        {
+            origin = gameObject.transform.GetChild(0).localToWorldMatrix.GetPosition();
+        }
+       
         direction = (movingSpeed > 0 ? 1 : -1) * transform.forward;
         RaycastHit hit;
         if (Physics.Raycast(origin, direction, out hit, rayCastDistance, car, QueryTriggerInteraction.UseGlobal))
@@ -48,7 +57,7 @@ public class Vehicle : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Debug.DrawLine(origin, origin + direction * 2);
+        Debug.DrawLine(origin, origin + direction * rayCastDistance);
     }
 
     private void OnTriggerEnter(Collider collision)

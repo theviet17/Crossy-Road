@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4336771795584181902}
   - component: {fileID: 4336771795584181899}
   m_Layer: 0
-  m_Name: VehicleInstancePoint15
+  m_Name: PlankInstancePoint15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,18 +97,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 7597554804249577163, guid: 64b3466fb79384240bf7c073f1c5b9d7, type: 3}
-  - {fileID: 3655083367547058037, guid: e2b224ab7cec8e34ba91f8afcbe13175, type: 3}
-  - {fileID: 3979995195051529083, guid: 193521a3957dbc844bf89a8f37c88a5d, type: 3}
-  - {fileID: 3902448836410246037, guid: 09e0be1b87e6fbf4f9e4e8e9d1494059, type: 3}
-  - {fileID: 8695697555629714304, guid: 0d5690ecec5de184c99c19282c81c0b7, type: 3}
-  - {fileID: 8394001311366146572, guid: 1e42eb5d501f59146829a1c4117ebee0, type: 3}
+  - {fileID: 976839409352476447, guid: 42e3e39f849184574805b0b211e1f4d2, type: 3}
+  - {fileID: 3264037051919438213, guid: a4afaf63498d64f538ae52aab353cbf2, type: 3}
   timeDelay:
-    minValue: 1.5
+    minValue: 1
     maxValue: 3
   baseSpeed:
-    minValue: 4
-    maxValue: 8
+    minValue: 3
+    maxValue: 5
   rightDrection: 0
   isTrain: 0
+  isPlank: 1
   terrain: {fileID: 2824064409965974254, guid: 882afd3816537164c90c02815d327474, type: 3}

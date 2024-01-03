@@ -107,7 +107,8 @@ MonoBehaviour:
     minValue: 1.5
     maxValue: 3
   baseSpeed:
-    minValue: 5
-    maxValue: 9
+    minValue: 4
+    maxValue: 8
   rightDrection: 1
+  isTrain: 0
   terrain: {fileID: 2824064409965974254, guid: 882afd3816537164c90c02815d327474, type: 3}

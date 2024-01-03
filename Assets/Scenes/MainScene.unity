@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44354156, g: 0.4928496, b: 0.57243997, a: 1}
+  m_IndirectSpecularColor: {r: 0.44354135, g: 0.49284917, b: 0.57243925, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1911,7 +1911,7 @@ RectTransform:
   - {fileID: 969695702}
   - {fileID: 2067275003}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10071,6 +10071,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 955677481, guid: bcfd3ec7b5446a0428729092bbe7429c, type: 3}
+      propertyPath: PlankInstancePoint.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 955677481, guid: bcfd3ec7b5446a0428729092bbe7429c, type: 3}
       propertyPath: TrainInstancePoint.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -10078,6 +10082,16 @@ PrefabInstance:
       propertyPath: VehicleInstancePoint.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 955677481, guid: bcfd3ec7b5446a0428729092bbe7429c, type: 3}
+      propertyPath: PlankInstancePoint.Array.data[0]
+      value: 
+      objectReference: {fileID: 4336771795584181936, guid: 09a8a276483d24f9ba1220e6face083f,
+        type: 3}
+    - target: {fileID: 955677481, guid: bcfd3ec7b5446a0428729092bbe7429c, type: 3}
+      propertyPath: PlankInstancePoint.Array.data[1]
+      value: 
+      objectReference: {fileID: 8488384897459176065, guid: 75ae52dffa01b495a8ddd84a4637defb,
+        type: 3}
     - target: {fileID: 955677481, guid: bcfd3ec7b5446a0428729092bbe7429c, type: 3}
       propertyPath: TrainInstancePoint.Array.data[0]
       value: 
@@ -10103,10 +10117,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain Generator
       objectReference: {fileID: 0}
+    - target: {fileID: 435116144843347200, guid: bcfd3ec7b5446a0428729092bbe7429c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 435116144843347206, guid: bcfd3ec7b5446a0428729092bbe7429c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 435116144843347206, guid: bcfd3ec7b5446a0428729092bbe7429c,
         type: 3}
@@ -20271,7 +20290,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1904086275 stripped
 Transform:
@@ -22247,7 +22266,7 @@ PrefabInstance:
     - target: {fileID: 1856185086997595972, guid: 17ae84e3ff31246d99fe9e8d3dd8150f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1856185086997595972, guid: 17ae84e3ff31246d99fe9e8d3dd8150f,
         type: 3}
