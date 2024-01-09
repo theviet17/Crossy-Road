@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1231103944}
   - component: {fileID: 1231103943}
   - component: {fileID: 1231103942}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Limit5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,8 +95,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.8039827, z: 1}
+  m_Center: {x: 0, y: 0.40199137, z: 0}
 --- !u!1 &1943870292
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 1943870296}
   - component: {fileID: 1943870295}
   - component: {fileID: 1943870294}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Limit-5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,8 +192,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.7444284, z: 1}
+  m_Center: {x: 0, y: 0.3722142, z: 0}
 --- !u!1 &5286287462918500875
 GameObject:
   m_ObjectHideFlags: 0

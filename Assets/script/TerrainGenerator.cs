@@ -15,6 +15,10 @@ public class TerrainGenerator : MonoBehaviour
     [HideInInspector] public List<GameObject> currentTerrains = new List<GameObject>();
     [HideInInspector] public Vector3 currentPosition = new Vector3(-10, 0, 0);
     private int numberTerrainInStartPoint = 0;
+
+    [Header("GOLD")]
+    [SerializeField] private GameObject gold;
+    [SerializeField] private int goldProbability = 3;
     public void TerrainGeneratorStart()
     {
         numberTerrainInStartPoint = Random.Range(12, 20);
@@ -68,6 +72,7 @@ public class TerrainGenerator : MonoBehaviour
                 TrackObstacle(terrain);
                 break;
             case "Grass":
+                GrassObstacle(terrain);
                 break;
             case "Water":
                 WaterObstacle(terrain);
@@ -84,6 +89,7 @@ public class TerrainGenerator : MonoBehaviour
     {
         GenerateRoadMarkings(terrain);
         GenerateVehicleInstancePoint(terrain);
+        GenerateRoadGold(terrain);
     }
     public void GenerateRoadMarkings(GameObject terrain)
     {
@@ -109,12 +115,22 @@ public class TerrainGenerator : MonoBehaviour
             Instance(terrain, VehicleInstancePoint[1],  new Vector3(0, 0.58f, -0.3f));
         }
     }
+    public void GenerateRoadGold(GameObject terrain)
+    {
+        List<float> position = CreateListFromRange(-4, 5);
+        if (CheckRandomPercentage(goldProbability))
+        {
+            SpawnGold(position, terrain, 0.931f);
+        }
+    }
+        
     [Header("OFFER FOR TRACK")]
     [SerializeField] private List<GameObject> TrainInstancePoint;
 
     public void TrackObstacle(GameObject terrain)
     {
         GenerateTrainInstancePoint(terrain);
+        GenerateTrackGold(terrain);
     }
     public void GenerateTrainInstancePoint(GameObject terrain)
     {
@@ -137,13 +153,30 @@ public class TerrainGenerator : MonoBehaviour
         wrl.movingObjectInstancePoint = movingObjectInstancePoint;
         wrl.Register();
     }
+    public void GenerateTrackGold(GameObject terrain)
+    {
+        List<float> position = CreateListFromRange(-4, 5);
+        if (CheckRandomPercentage(goldProbability))
+        {
+            SpawnGold(position, terrain, 1.086f);
+        }
+    }
 
     [Header("OFFER FOR WATER")] 
     private int CurrentPlankType = 0;
+    [SerializeField] private GameObject duckweed;
     [SerializeField] private List<GameObject> PlankInstancePoint;
     public void WaterObstacle(GameObject terrain)
     {
-        GeneratePlankInstancePoint(terrain);
+        if(CheckRandomPercentage(70) || currentTerrains[currentTerrains.IndexOf(terrain) - 1].tag == "Grass")
+        {
+            GeneratePlankInstancePoint(terrain);
+        }
+        else
+        {
+            GenerateDuckweed(terrain);
+        }
+        
     }
     public void GeneratePlankInstancePoint(GameObject terrain)
     {
@@ -169,6 +202,62 @@ public class TerrainGenerator : MonoBehaviour
             CurrentPlankType = 1;
         }
     }
+    public void GenerateDuckweed(GameObject terrain)
+    {
+        terrain.name = "RiverWithDuckweed";
+        List<float> position = new List<float>();
+        var previousTerain = currentTerrains[currentTerrains.IndexOf(terrain) - 1];
+        if (previousTerain.name == terrain.name)
+        {
+            for(int i = 2; i < previousTerain.transform.childCount; i++)
+            {
+                var x = terrain.transform.localToWorldMatrix.GetPosition().x;
+                var z = previousTerain.transform.GetChild(i).transform.position.z;
+                var ob = Instantiate(duckweed, new Vector3(x, 0, z), Quaternion.identity);
+                ob.transform.SetParent(terrain.transform);
+                position.Add(z);
+            }
+        }
+        else
+        {
+            int numberDuckweed;
+            var randomNumber = Random.Range(0, 100);
+            if (randomNumber < 60)
+            {
+                numberDuckweed = 2;
+            }
+            else if (randomNumber < 90)
+            {
+                numberDuckweed = 1;
+            }
+            else
+            {
+                numberDuckweed = 3;
+            }
+            var currentZ = 100;
+            for (int i = 1; i <= numberDuckweed; i++)
+            {
+                var z = Random.Range(-3, 3);
+                if (z != currentZ)
+                {
+                    currentZ = z;
+                    var x = terrain.transform.localToWorldMatrix.GetPosition().x;
+                    var ob = Instantiate(duckweed, new Vector3(x, 0, z), Quaternion.identity);
+                    ob.transform.SetParent(terrain.transform);
+                    position.Add(z);
+                }
+
+            }
+        }
+        GenerateDuckweedGold(terrain,position);
+    }
+    public void GenerateDuckweedGold(GameObject terrain, List<float> position)
+    {
+        if (CheckRandomPercentage(goldProbability))
+        {
+            SpawnGold(position, terrain, 0.9f);
+        }
+    }
 
     public MovingObjectInstancePoint Instance(GameObject terrain,GameObject gameObject, Vector3 position)
     {
@@ -178,5 +267,100 @@ public class TerrainGenerator : MonoBehaviour
         vhip.transform.localPosition = position;
         return vhip.GetComponent<MovingObjectInstancePoint>();
     }
+
+    [Header("OFFER FOR GRASS")]
+    [SerializeField] private List<GameObject> Obstacle;
+    public void GrassObstacle(GameObject terrain)
+    {
+        GenerateGrassObstacle(terrain);
+    }
+    public void GenerateGrassObstacle(GameObject terrain)
+    {
+        List<float> position = CreateListFromRange(-4, 5);
+        bool CanSpawn = true;
+        if(currentPosition.x > 0)
+        {
+            var previousTerain = currentTerrains[currentTerrains.IndexOf(terrain) - 1];
+            if (previousTerain.name == "RiverWithDuckweed")
+            {
+                CanSpawn = false;
+            }
+        }
+        for (int i = -10; i <= 10; i++)
+        {
+            if(i >= -4 && i <= 4)
+            {
+                if (CanSpawn)
+                {
+                    if (currentPosition.x < -5)
+                    {
+                        var x = terrain.transform.localToWorldMatrix.GetPosition().x;
+                        var ob = Instantiate(Obstacle[Random.Range(2, Obstacle.Count)], new Vector3(x, 1, i), Quaternion.identity);
+                        ob.transform.SetParent(terrain.transform);
+                    }
+                    else
+                    {
+                        if (CheckRandomPercentage(20))
+                        {
+                            var x = terrain.transform.localToWorldMatrix.GetPosition().x;
+                            if (new Vector3(x, 1, i) != new Vector3(0, 1, 0))
+                            {
+                                var ob = Instantiate(Obstacle[Random.Range(0, Obstacle.Count - 1)], new Vector3(x, 1, i), Quaternion.identity);
+                                ob.transform.SetParent(terrain.transform);
+                            }
+                            else
+                            {
+                                Debug.Log("Spawn trung vao vi tri nhan vat chinh");
+                            }
+                            position.Remove(i);
+                        }
+                    }
+                   
+                }
+               
+            }
+            else
+            {
+                var x = terrain.transform.localToWorldMatrix.GetPosition().x;
+                var ob = Instantiate(Obstacle[Random.Range(2, Obstacle.Count)], new Vector3(x, 1, i), Quaternion.identity);
+                ob.transform.SetParent(terrain.transform);
+            }
+        }
+        GenerateGrassGold(terrain, position);
+    }
+    public void GenerateGrassGold(GameObject terrain, List<float> position)
+    {
+        if (CheckRandomPercentage(goldProbability))
+        {
+            SpawnGold(position, terrain, 1);
+        }
+    }
+    public bool CheckRandomPercentage(float percentage)
+    {
+        // Tạo một số ngẫu nhiên từ 0 đến 100
+        var randomValue = Random.Range(0, 100);
+        // Kiểm tra xem giá trị ngẫu nhiên có nằm trong tỷ lệ phần trăm hay không
+        return randomValue < percentage;
+    }
+
+    public void SpawnGold(List<float> position, GameObject terrain, float y)
+    {
+        var select = position[Random.Range(0, position.Count)];
+        var x = terrain.transform.localToWorldMatrix.GetPosition().x;
+        var ob = Instantiate(gold, new Vector3(x, y, select), Quaternion.identity);
+        ob.transform.SetParent(terrain.transform);
+    }
+    List<float> CreateListFromRange(int start, int end)
+    {
+        List<float> result = new List<float>();
+
+        for (int i = start; i < end; i++)
+        {
+            result.Add((float)i);
+        }
+
+        return result;
+    }
+
 
 }

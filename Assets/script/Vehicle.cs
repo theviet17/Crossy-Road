@@ -46,7 +46,7 @@ public class Vehicle : MonoBehaviour
         {
             if (hit.collider != null && hit.collider.gameObject != this.gameObject)
             {
-                Debug.Log("Vachamvoixephiatruoc");
+                //Debug.Log("Vachamvoixephiatruoc");
                 rayCastDistance = 0;
                 movingSpeed = hit.collider.gameObject.GetComponent<Vehicle>().movingSpeed;
             }

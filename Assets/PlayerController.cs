@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     private bool onPlank = false;
     public LayerMask plank;
     private GameObject planket;
- 
+
+    public LayerMask obstacle;
     private float currentX = 0;
 
     public void PlayerControllerStart()
@@ -39,43 +40,74 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-                currentX++;
-                if (planket != null)
-                {
-                    planket.GetComponent<Planket>().currentJumpPoint = 100;
-                }
                 direction = new Vector3(1, 0, 0);
-                MoveCharacter(new Vector3(1, 0, 0), 0);
+                if (!HaveObstacleInThisDirection())
+                {
+                    currentX++;
+                    if (planket != null)
+                    {
+                        planket.GetComponent<Planket>().currentJumpPoint = 100;
+                    }
+                    MoveCharacter(new Vector3(1, 0, 0), 0);
+                }
+                else
+                {
+                    RotateSmooth(0);
+                }
            
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
-                currentX--;
-                if (planket != null)
-                {
-                    planket.GetComponent<Planket>().currentJumpPoint = 100;
-                }
                 direction = new Vector3(-1, 0, 0);
-                MoveCharacter(new Vector3(-1, 0, 0),180);
-            
+                if (!HaveObstacleInThisDirection())
+                {
+                    currentX--;
+                    if (planket != null)
+                    {
+                        planket.GetComponent<Planket>().currentJumpPoint = 100;
+                    }
+                    direction = new Vector3(-1, 0, 0);
+                    MoveCharacter(new Vector3(-1, 0, 0), 180);
+                }
+                else
+                {
+                    RotateSmooth(180);
+                }
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
                 direction = new Vector3(0, 0, -1);
-                if (planket != null)
+                if (!HaveObstacleInThisDirection())
                 {
-                    planket.GetComponent<Planket>().currentJumpPoint++;
+                    if (planket != null)
+                    {
+                        planket.GetComponent<Planket>().currentJumpPoint++;
+                    }
+                    MoveCharacter(new Vector3(0, 0, -1), 90);
                 }
-                MoveCharacter(new Vector3(0, 0, -1),90);
+                else
+                {
+                    RotateSmooth(90);
+
+                }
+                
             }
             if (Input.GetKeyDown(KeyCode.A))
             {
-                if (planket != null)
-                {
-                    planket.GetComponent<Planket>().currentJumpPoint--;
-                }
                 direction = new Vector3(0, 0, 1);
-                MoveCharacter(new Vector3(0, 0, 1),270);
+                if (!HaveObstacleInThisDirection())
+                {
+                    if (planket != null)
+                    {
+                        planket.GetComponent<Planket>().currentJumpPoint--;
+                    }
+                    MoveCharacter(new Vector3(0, 0, 1), 270);
+                }
+                else
+                {
+                    RotateSmooth(270);
+
+                }
             }
         }
 
@@ -88,6 +120,15 @@ public class PlayerController : MonoBehaviour
             transform.parent = null;
         }
         
+    }
+    public bool HaveObstacleInThisDirection()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(rayCastPoint.transform.position, direction, out hit, 1, obstacle, QueryTriggerInteraction.UseGlobal))
+        {
+            return true;
+        }
+        return false;
     }
 
     private void MoveCharacter(Vector3 difference, float angle)
@@ -133,11 +174,18 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(scaleTime);
         
         MoveSmooth(difference, currentHeight, stillOnPlank);
+
         RotateSmooth(angle);
         
         yield return TweenScale(new Vector3(0.5f, 0.3f, 0.7f), new Vector3(0.5f, 0.5f, 0.5f),
             new Vector3(0, -0.31f, 0), new Vector3(0, -0.162f, 0));
-        
+
+        if (!stillOnPlank)
+        {
+            onPlank = false;
+            this.planket = null;
+        }
+
         yield return new WaitForSeconds(jumpTime);
 
         canJump = true;
@@ -145,10 +193,6 @@ public class PlayerController : MonoBehaviour
         {
             planket.GetComponent<Planket>().Floating();
             onPlank = true;
-        }
-        else
-        {
-            onPlank = false;
         }
     }
     IEnumerator TweenScale(
@@ -168,7 +212,26 @@ public class PlayerController : MonoBehaviour
             var newPosition = transform.position + difference;
             newPosition = new Vector3(newPosition.x, height, newPosition.z);
 
-            newPosition = onPlank ? new Vector3((float)Math.Floor(newPosition.x+0.5f), newPosition.y, newPosition.z) : newPosition;
+            var nextTerrain = terrainGenerator.CurrentTerrainJumpIn(currentX);
+           
+            newPosition = onPlank ? new Vector3((float)Math.Floor(newPosition.x+0.5f), newPosition.y, (float)Math.Floor(newPosition.z + 0.5f)) : newPosition;
+
+            if (nextTerrain.tag == "Grass")
+            {
+                for (int i = 1; i < nextTerrain.transform.childCount-1; i++)
+                {
+                    if (nextTerrain.transform.GetChild(i).transform.position == newPosition)
+                    {
+                        var planketSpeed = planket.GetComponent<Vehicle>().movingSpeed;
+                        var newZ = planketSpeed > 0 ? newPosition.z - 1 : newPosition.z + 1;
+                        newPosition = new Vector3(newPosition.x, newPosition.y, newZ);
+                        Debug.Log("nhay vao chuong ngai vat");
+                        break;
+                    }
+
+                }
+            }
+
 
             StartCoroutine(jumpTime.ParabolJump((p) => gameObject.transform.position = p, 
                 gameObject.transform.position, newPosition, jumpCurve));
@@ -237,10 +300,20 @@ public class PlayerController : MonoBehaviour
 
             if (nextTerrain.tag == "Water")
             {
-                var moip = nextTerrain.transform.GetChild(2).GetComponent<MovingObjectInstancePoint>();
-                var plankSpeed = moip.rightDrection ? moip.plankSpeed : -1 * moip.plankSpeed;
-                var changingZ = plankSpeed * (jumpTime + scaleTime);
-                Debug.Log(changingZ);
+                float changingZ = 0;
+                if (nextTerrain.name != "RiverWithDuckweed")
+                {
+                    var moip = nextTerrain.transform.GetChild(2).GetComponent<MovingObjectInstancePoint>();
+                    var plankSpeed = moip.rightDrection ? moip.plankSpeed : -1 * moip.plankSpeed;
+                    changingZ = plankSpeed * (jumpTime + scaleTime);
+                }
+                else if(planket != null) // mục tiêu chính là nếu đang trên planket có thể nhảy chính sác vào duckweed
+                {
+                    var plankSpeed = -1 * this.planket.GetComponent<Vehicle>().movingSpeed;
+                    changingZ = plankSpeed * (jumpTime + scaleTime);
+
+                }
+                //Debug.Log(changingZ);
 
                 if (Physics.Raycast(rayCastPoint.transform.position - new Vector3(0, 0, changingZ), direction, out hit, 1, plank, QueryTriggerInteraction.UseGlobal))
                 {

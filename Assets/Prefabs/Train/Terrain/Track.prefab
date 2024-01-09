@@ -1661,7 +1661,7 @@ GameObject:
   - component: {fileID: 2601724219872993947}
   - component: {fileID: 2850181959951105191}
   - component: {fileID: 4146076166489400414}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Limit-5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1744,8 +1744,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.3219109, z: 1}
+  m_Center: {x: 0, y: 0.6609554, z: 0}
 --- !u!1 &2747537420921160988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,7 +2631,7 @@ GameObject:
   - component: {fileID: 6888356355623647222}
   - component: {fileID: 5601340213842819668}
   - component: {fileID: 5615979158391543494}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Limit5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2714,8 +2714,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.7266955, z: 1}
+  m_Center: {x: 0, y: 0.86334777, z: 0}
 --- !u!1 &3723772063526294826
 GameObject:
   m_ObjectHideFlags: 0
@@ -5325,7 +5325,7 @@ PrefabInstance:
     - target: {fileID: 2085433153482984808, guid: 179627c4661024a45bc5b88af676b7e8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0282
+      value: -0.0118
       objectReference: {fileID: 0}
     - target: {fileID: 2085433153482984808, guid: 179627c4661024a45bc5b88af676b7e8,
         type: 3}
