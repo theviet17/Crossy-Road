@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpTime = 0.3f;
     [SerializeField] private float scaleTime = 0.03f;
 
-    private bool canJump = true;
+    private bool canJump = false;
+    private bool onWater = false;
     
     private GameObject rayCastPoint;
     private Vector3 direction;
@@ -27,6 +28,31 @@ public class PlayerController : MonoBehaviour
     public LayerMask obstacle;
     private float currentX = 0;
 
+    public GameData gameData;
+
+    public GameObject effect;
+
+    public void ReStart()
+    {
+        gameObject.transform.position = new Vector3(0, 1, 0);
+        currentX = 0;
+        canJump = true;
+        for (int i = 0; i < gameData.characters.Count; i++)
+        {
+            if (gameData.characters[i].type == 3)
+            {
+                var playerModel = Instantiate(gameData.characters[i].prefab);
+                playerModel.gameObject.SetActive(true);
+                playerModel.transform.SetParent(gameObject.transform);
+                playerModel.transform.localPosition = transform.GetChild(0).localPosition;
+                playerModel.transform.localEulerAngles = transform.GetChild(0).localEulerAngles;
+                playerModel.transform.localScale = transform.GetChild(0).localScale;
+                transform.GetChild(0).gameObject.SetActive(false);
+                break;
+            }
+        }
+        PlayerControllerStart();
+    }
     public void PlayerControllerStart()
     {
         float currentHeight = Height(terrainGenerator.CurrentTerrainJumpIn(currentX));
@@ -194,12 +220,20 @@ public class PlayerController : MonoBehaviour
             planket.GetComponent<Planket>().Floating();
             onPlank = true;
         }
+        if (onWater)
+        {
+            //canJump = false;
+            //MoveSmooth(gameObject.transform.position, -3, false) ;
+            var ef = Instantiate(effect);
+            Destroy(ef, 3);
+            ef.transform.position = gameObject.transform.position - new Vector3(0,0.8f,0);
+        }
     }
     IEnumerator TweenScale(
             Vector3 startScale, Vector3 targetScale,
             Vector3 startPosition, Vector3 targetPosition)
     {
-        var childObject = gameObject.transform.GetChild(0);
+        var childObject = gameObject.transform.GetChild(2);
         yield return scaleTime.ScaleObject(
             (s) => childObject.localScale = s, startScale, targetScale,
             (p) => childObject.localPosition = p, startPosition, targetPosition,
@@ -270,6 +304,7 @@ public class PlayerController : MonoBehaviour
             case "Grass":
                 return 1f;
             case "Water":
+                onWater = true;
                 return 0.871f;
             case "Plank":
                 return 1f;

@@ -19,6 +19,21 @@ public class TerrainGenerator : MonoBehaviour
     [Header("GOLD")]
     [SerializeField] private GameObject gold;
     [SerializeField] private int goldProbability = 3;
+    public void ReStart()
+    {
+        DestroyAllChildrenObjects();
+        currentTerrains.Clear();
+        currentPosition = new Vector3(-10, 0, 0);
+        numberTerrainInStartPoint = 0;
+        TerrainGeneratorStart();
+    }
+    void DestroyAllChildrenObjects()
+    {
+        foreach (Transform child in terrainHolder)
+        {
+            Destroy(child.gameObject);
+        }
+    }
     public void TerrainGeneratorStart()
     {
         numberTerrainInStartPoint = Random.Range(12, 20);
