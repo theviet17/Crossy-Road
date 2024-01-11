@@ -104,11 +104,13 @@ MonoBehaviour:
   - {fileID: 1577816563767955436, guid: c0284f8e2f726334895176c9f1a8ab09, type: 3}
   - {fileID: 4158601397884521315, guid: 0a51fe2add2971d4a9898d7cee8f8da7, type: 3}
   timeDelay:
-    minValue: 1.5
-    maxValue: 3
+    minValue: 2
+    maxValue: 4
   baseSpeed:
-    minValue: 4
-    maxValue: 8
+    minValue: 3
+    maxValue: 6
   rightDrection: 1
   isTrain: 0
+  isPlank: 0
+  plankSpeed: 0
   terrain: {fileID: 2824064409965974254, guid: 882afd3816537164c90c02815d327474, type: 3}

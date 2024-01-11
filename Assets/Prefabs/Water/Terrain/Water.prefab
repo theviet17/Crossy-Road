@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 6646249769717807766}
   m_Layer: 0
   m_Name: Limit5
-  m_TagString: Untagged
+  m_TagString: Wave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,8 +194,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.0255718, z: 0.056259155}
+  m_Center: {x: 0, y: 0.48645884, z: 0.47187042}
 --- !u!1 &9089144294631656073
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 7415416065886566032}
   m_Layer: 0
   m_Name: Limit-5
-  m_TagString: Untagged
+  m_TagString: Wave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,5 +291,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.8928033, z: 0.100978374}
+  m_Center: {x: 0, y: 0.45397133, z: -0.4495108}

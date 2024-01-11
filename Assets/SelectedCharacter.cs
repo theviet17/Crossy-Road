@@ -28,7 +28,7 @@ public class SelectedCharacter : MonoBehaviour
     [SerializeField] List<Transform> pose;
     [SerializeField] Transform pointStart;
     [SerializeField] Transform pointEnd;
-    [SerializeField] GameData gameData;
+    [SerializeField] public GameData gameData;
     [SerializeField] List<Character> characters = new List<Character>();
     int centerPosition;
     int leftPoint;

@@ -19,6 +19,7 @@ public class WarningLight : MonoBehaviour
     public void OnLight()
     {
         StartCoroutine(Flicker());
+        gameObject.GetComponent<AudioSource>().Play();
     }
     public IEnumerator Flicker()
     {

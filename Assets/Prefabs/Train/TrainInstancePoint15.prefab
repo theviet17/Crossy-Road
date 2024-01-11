@@ -102,8 +102,10 @@ MonoBehaviour:
     minValue: 5
     maxValue: 10
   baseSpeed:
-    minValue: 30
-    maxValue: 30
+    minValue: 40
+    maxValue: 40
   rightDrection: 0
   isTrain: 1
+  isPlank: 0
+  plankSpeed: 0
   terrain: {fileID: 2824064409965974254, guid: 882afd3816537164c90c02815d327474, type: 3}

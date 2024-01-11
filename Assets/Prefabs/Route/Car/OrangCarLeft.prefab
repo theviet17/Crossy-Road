@@ -208,12 +208,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29ace9b85ceb744f8a3aa1a8c84a0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: -30
   rayCastDistance: 2
   car:
     serializedVersion: 2
     m_Bits: 128
+  lifeTime: 6
   movingSpeed: 0
+  isPlank: 0
 --- !u!1001 &4417211061775752930
 PrefabInstance:
   m_ObjectHideFlags: 0

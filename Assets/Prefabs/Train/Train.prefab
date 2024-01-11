@@ -512,9 +512,9 @@ GameObject:
   - component: {fileID: 8773537712398305791}
   - component: {fileID: 4663086260879229202}
   - component: {fileID: -449445146712465602}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Train
-  m_TagString: die
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -601,8 +601,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.1387901, z: 15.573189}
-  m_Center: {x: 0, y: -0.069395065, z: -0.03659439}
+  m_Size: {x: 1, y: 1.1387901, z: 18.425106}
+  m_Center: {x: 0, y: -0.069395065, z: 1.5883121}
 --- !u!82 &4663086260879229202
 AudioSource:
   m_ObjectHideFlags: 0
@@ -715,5 +715,6 @@ MonoBehaviour:
   car:
     serializedVersion: 2
     m_Bits: 0
-  lifeTime: 1.5
+  lifeTime: 3
   movingSpeed: 0
+  isPlank: 0

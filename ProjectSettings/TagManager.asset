@@ -13,6 +13,11 @@ TagManager:
   - Road
   - Water
   - Car
+  - Plank
+  - Obstacle
+  - Gold
+  - Wave
+  - Hawk
   layers:
   - Default
   - TransparentFX
@@ -22,8 +27,8 @@ TagManager:
   - UI
   - Post Pr
   - Car
-  - 
-  - 
+  - Plank
+  - Obstacle
   - 
   - 
   - 
