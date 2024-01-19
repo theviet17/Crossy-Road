@@ -100,10 +100,11 @@ public class GameManager : MonoBehaviour
 
     void ReGenerateMapAndShowUIPanel()
     {
+        EndGameDataSave();
+
         playerController.ReLoadParentStatus();
         terrainGenerator.ReStart();
         playerController.ReLoadData();
-        EndGameDataSave();
         ShowMenuPanel();
     }
 

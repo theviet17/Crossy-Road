@@ -295,6 +295,6 @@ MonoBehaviour:
   car:
     serializedVersion: 2
     m_Bits: 128
-  lifeTime: 6
+  lifeTime: 10
   movingSpeed: 0
   isPlank: 0

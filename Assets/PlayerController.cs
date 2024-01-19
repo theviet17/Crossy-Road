@@ -584,7 +584,11 @@ public class PlayerController : MonoBehaviour
     public void EventDie()
     {
         canJump = false;
-        TakeScreenShots();
+        if(transform.position.x > gameData.highestPoint)
+        {
+            TakeScreenShots();
+        }
+        //
         Die?.Invoke();
     }
 

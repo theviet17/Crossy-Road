@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class TerrainGenerator : MonoBehaviour
@@ -19,12 +20,20 @@ public class TerrainGenerator : MonoBehaviour
     [Header("GOLD")]
     [SerializeField] private GameObject gold;
     [SerializeField] private int goldProbability = 3;
+    [SerializeField] private GameObject textLine;
+    [SerializeField] private int topPoint;
+    [SerializeField] private GameData gameData;
+    private void Start()
+    {
+        topPoint = gameData.highestPoint;
+    }
     public void ReStart()
     {
         DestroyAllChildrenObjects();
         currentTerrains.Clear();
         currentPosition = new Vector3(-10, 0, 0);
         numberTerrainInStartPoint = 0;
+        topPoint = gameData.highestPoint;
         TerrainGeneratorStart();
     }
     void DestroyAllChildrenObjects()
@@ -53,6 +62,12 @@ public class TerrainGenerator : MonoBehaviour
             for (int i = 0; i < terrainInSuccession; i++)
             {
                GameObject terrain = Instantiate(terrainDatas[wichTerrain].possibleTerrain[Random.Range(0,terrainDatas[wichTerrain].possibleTerrain.Count)], currentPosition, Quaternion.identity, terrainHolder);
+
+               if(currentPosition.x == topPoint)
+                {
+                    GameObject textline = Instantiate(textLine, currentPosition, Quaternion.identity, terrainHolder);
+                    textline.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Top " +topPoint.ToString();
+                }
             
                currentTerrains.Add(terrain);
                GenerateObstacle(terrain);
@@ -195,9 +210,10 @@ public class TerrainGenerator : MonoBehaviour
     }
     public void GeneratePlankInstancePoint(GameObject terrain)
     {
+        terrain.name = "River";
         var previousTerain = currentTerrains[currentTerrains.IndexOf(terrain) - 1];
         int randomNumber = 0;
-        if (previousTerain.tag != terrain.tag)
+        if (previousTerain.name != terrain.name)
         {
             randomNumber = Random.Range(0, 100);
         }
@@ -222,6 +238,7 @@ public class TerrainGenerator : MonoBehaviour
         terrain.name = "RiverWithDuckweed";
         List<float> position = new List<float>();
         var previousTerain = currentTerrains[currentTerrains.IndexOf(terrain) - 1];
+
         if (previousTerain.name == terrain.name)
         {
             for(int i = 2; i < previousTerain.transform.childCount; i++)
@@ -252,7 +269,15 @@ public class TerrainGenerator : MonoBehaviour
             var currentZ = 100;
             for (int i = 1; i <= numberDuckweed; i++)
             {
-                var z = Random.Range(-3, 3);
+                int z;
+                if (CurrentPlankType % 2 == 0)
+                {
+                    z = Random.Range(-3, 1);
+                }
+                else
+                {
+                    z = Random.Range(-1, 3);
+                }
                 if (z != currentZ)
                 {
                     currentZ = z;
@@ -315,7 +340,7 @@ public class TerrainGenerator : MonoBehaviour
                     }
                     else
                     {
-                        if (CheckRandomPercentage(20))
+                        if (CheckRandomPercentage(17))
                         {
                             var x = terrain.transform.localToWorldMatrix.GetPosition().x;
                             if (new Vector3(x, 1, i) != new Vector3(0, 1, 0))

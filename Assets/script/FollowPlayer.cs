@@ -26,11 +26,11 @@ public class FollowPlayer : MonoBehaviour
             var changePosition = new Vector3(0, 0, 0);
             if (player.transform.position.x + offset.x >= transform.position.x)
             {
-                changePosition = player.transform.position + offset;
+                changePosition = new Vector3(transform.position.x + offset.x, transform.position.y, player.transform.position.z + offset.z);
             }
             else
             {
-                changePosition = new Vector3(transform.position.x, player.transform.position.y + offset.y, player.transform.position.z + offset.z);
+                changePosition = new Vector3(transform.position.x, transform.position.y, player.transform.position.z + offset.z);
             }
             transform.position = Vector3.Lerp(transform.position, changePosition, smoothness);
         }

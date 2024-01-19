@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2415149710288080229}
   - component: {fileID: 4055941348369420789}
   - component: {fileID: 4668366912553927520}
-  - component: {fileID: 8863800388796027537}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8863800388796027537
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23984545824556363}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &50913567570703372
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +94,6 @@ GameObject:
   - component: {fileID: 4843128355587327352}
   - component: {fileID: 8356471421056323804}
   - component: {fileID: 5871657829354980029}
-  - component: {fileID: 802027845665739611}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -181,19 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &802027845665739611
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50913567570703372}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &104104984816254223
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +177,6 @@ GameObject:
   - component: {fileID: 4821161222452181534}
   - component: {fileID: 1913859411057986341}
   - component: {fileID: 714263041482026970}
-  - component: {fileID: 5688264341744767967}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -278,19 +249,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5688264341744767967
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104104984816254223}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &116038956648905351
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +260,6 @@ GameObject:
   - component: {fileID: 2152390131492487562}
   - component: {fileID: 6220541113955724128}
   - component: {fileID: 1992257351526289326}
-  - component: {fileID: 3643429038362030705}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -375,19 +332,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3643429038362030705
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116038956648905351}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &300633194906061418
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +343,6 @@ GameObject:
   - component: {fileID: 2718585943139540199}
   - component: {fileID: 2051703943808222818}
   - component: {fileID: 2694333406549247322}
-  - component: {fileID: 1699386518531583374}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -472,19 +415,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1699386518531583374
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300633194906061418}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &553940540460422928
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +426,6 @@ GameObject:
   - component: {fileID: 8157929228245006822}
   - component: {fileID: 6947267575851487303}
   - component: {fileID: 1516981802588451687}
-  - component: {fileID: 3420692709325911525}
   m_Layer: 0
   m_Name: Long
   m_TagString: Untagged
@@ -569,19 +498,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3420692709325911525
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 553940540460422928}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &695261015962038337
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +509,6 @@ GameObject:
   - component: {fileID: 4568069943573278666}
   - component: {fileID: 1030328971386766605}
   - component: {fileID: 208338274872736167}
-  - component: {fileID: 5763563921955228422}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -666,19 +581,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5763563921955228422
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695261015962038337}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &748860870940912667
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,7 +592,6 @@ GameObject:
   - component: {fileID: 8297590258454058306}
   - component: {fileID: 1103187213054448810}
   - component: {fileID: 2777713163163887025}
-  - component: {fileID: 6882175581311488292}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -763,19 +664,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6882175581311488292
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748860870940912667}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &1001860468923247340
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,7 +675,6 @@ GameObject:
   - component: {fileID: 8912026729275473349}
   - component: {fileID: 1478942639419158600}
   - component: {fileID: 4463094987486963024}
-  - component: {fileID: 4129679238241088946}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -860,19 +747,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4129679238241088946
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001860468923247340}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &1372882885735399281
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,7 +758,6 @@ GameObject:
   - component: {fileID: 8983992925748647844}
   - component: {fileID: 218043838255731089}
   - component: {fileID: 2657370917550579722}
-  - component: {fileID: 2239225256395536235}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -957,19 +830,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2239225256395536235
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372882885735399281}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &1415361233668484085
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,7 +841,6 @@ GameObject:
   - component: {fileID: 6618850637089471432}
   - component: {fileID: 2629159791210583327}
   - component: {fileID: 8683604475479536416}
-  - component: {fileID: 250484202934086483}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -1054,19 +913,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &250484202934086483
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415361233668484085}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &1438328190751981830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +924,6 @@ GameObject:
   - component: {fileID: 6716247323913681344}
   - component: {fileID: 7061009421952383072}
   - component: {fileID: 8456731927965268851}
-  - component: {fileID: 8328865209992187821}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -1151,19 +996,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8328865209992187821
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438328190751981830}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &1533916107279235084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1007,6 @@ GameObject:
   - component: {fileID: 8743105547610577020}
   - component: {fileID: 8504924804152915544}
   - component: {fileID: 4031441616875544816}
-  - component: {fileID: 5249657156192598955}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -1248,19 +1079,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5249657156192598955
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533916107279235084}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &1596056915782823000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,7 +1090,6 @@ GameObject:
   - component: {fileID: 2318332102392522286}
   - component: {fileID: 4491518208367155005}
   - component: {fileID: 3275460830175385875}
-  - component: {fileID: 5488950430663989330}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -1345,19 +1162,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5488950430663989330
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596056915782823000}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &2367684527399499156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,7 +1173,6 @@ GameObject:
   - component: {fileID: 6087634946608472743}
   - component: {fileID: 1141864267456547514}
   - component: {fileID: 6015481037891012595}
-  - component: {fileID: 4231495609173813089}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -1442,19 +1245,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4231495609173813089
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2367684527399499156}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &2423320561642773422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,7 +1256,6 @@ GameObject:
   - component: {fileID: 3318153256298745333}
   - component: {fileID: 5520749938348885383}
   - component: {fileID: 6078749448750117041}
-  - component: {fileID: 7079868791263471957}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -1539,19 +1328,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7079868791263471957
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2423320561642773422}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &2471513084919137926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1563,7 +1339,6 @@ GameObject:
   - component: {fileID: 903746811892889915}
   - component: {fileID: 3453817715938950756}
   - component: {fileID: 516454479175711971}
-  - component: {fileID: 1240962233769691662}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -1636,19 +1411,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1240962233769691662
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2471513084919137926}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &2536369291729840573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,7 +1519,6 @@ GameObject:
   - component: {fileID: 2292681362695848540}
   - component: {fileID: 8187117323443302750}
   - component: {fileID: 64065587447521005}
-  - component: {fileID: 8385802727714948853}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -1830,19 +1591,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8385802727714948853
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2747537420921160988}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &2899566002815429885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,7 +1602,6 @@ GameObject:
   - component: {fileID: 243157010183419170}
   - component: {fileID: 8232671238000780142}
   - component: {fileID: 2940498818714581446}
-  - component: {fileID: 8022694676519788314}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -1927,19 +1674,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8022694676519788314
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2899566002815429885}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &3225253533716336063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,7 +1685,6 @@ GameObject:
   - component: {fileID: 1689669471908709246}
   - component: {fileID: 807631454354095595}
   - component: {fileID: 6488726478184072534}
-  - component: {fileID: 5297721607310868229}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -2024,19 +1757,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5297721607310868229
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3225253533716336063}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &3356281682126842960
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,7 +1768,6 @@ GameObject:
   - component: {fileID: 1410061767001667127}
   - component: {fileID: 8979921849671193655}
   - component: {fileID: 2826137020773523899}
-  - component: {fileID: 2155113219201856939}
   m_Layer: 0
   m_Name: 'Long '
   m_TagString: Untagged
@@ -2121,19 +1840,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2155113219201856939
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3356281682126842960}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &3407064594850639386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2145,7 +1851,6 @@ GameObject:
   - component: {fileID: 7391241561121228994}
   - component: {fileID: 9079283532991871136}
   - component: {fileID: 1644704386365704684}
-  - component: {fileID: 1974317349335550303}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -2218,19 +1923,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1974317349335550303
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3407064594850639386}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &3432986939397316299
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,7 +1934,6 @@ GameObject:
   - component: {fileID: 8290179985959169068}
   - component: {fileID: 3410856858500414554}
   - component: {fileID: 5806174413066255791}
-  - component: {fileID: 4896457257928178726}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -2315,19 +2006,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4896457257928178726
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3432986939397316299}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &3533516088628570722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2339,7 +2017,6 @@ GameObject:
   - component: {fileID: 1790175987526444195}
   - component: {fileID: 1195683635638568420}
   - component: {fileID: 6507809948708049662}
-  - component: {fileID: 979609629498978998}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -2412,19 +2089,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &979609629498978998
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3533516088628570722}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &3544724903942772521
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,7 +2100,6 @@ GameObject:
   - component: {fileID: 5848574599306806605}
   - component: {fileID: 5773994931307284734}
   - component: {fileID: 5489879297144502407}
-  - component: {fileID: 910963734179389474}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -2509,19 +2172,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &910963734179389474
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3544724903942772521}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &3677397319314002916
 GameObject:
   m_ObjectHideFlags: 0
@@ -2533,7 +2183,6 @@ GameObject:
   - component: {fileID: 1992127226237482152}
   - component: {fileID: 2689106499145889568}
   - component: {fileID: 4392363841089019174}
-  - component: {fileID: 6924440004406151083}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -2606,19 +2255,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6924440004406151083
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3677397319314002916}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &3719459345998960577
 GameObject:
   m_ObjectHideFlags: 0
@@ -2727,7 +2363,6 @@ GameObject:
   - component: {fileID: 4542086664784864417}
   - component: {fileID: 7604581582836078070}
   - component: {fileID: 6683452112762682396}
-  - component: {fileID: 1197571311759250563}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -2800,19 +2435,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1197571311759250563
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3723772063526294826}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &3755066658457687323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2824,7 +2446,6 @@ GameObject:
   - component: {fileID: 7097302119161300200}
   - component: {fileID: 5555356310577423316}
   - component: {fileID: 1382031279772281705}
-  - component: {fileID: 7126410666549983413}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -2897,19 +2518,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7126410666549983413
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3755066658457687323}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &3898599794586464605
 GameObject:
   m_ObjectHideFlags: 0
@@ -2921,7 +2529,6 @@ GameObject:
   - component: {fileID: 3389461979641495225}
   - component: {fileID: 4512521779273128561}
   - component: {fileID: 4606316448883003861}
-  - component: {fileID: 7601034553275582891}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -2994,19 +2601,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7601034553275582891
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3898599794586464605}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &4131569868780809366
 GameObject:
   m_ObjectHideFlags: 0
@@ -3018,7 +2612,6 @@ GameObject:
   - component: {fileID: 3399344668160363209}
   - component: {fileID: 2110896867579322663}
   - component: {fileID: 1569421167299556111}
-  - component: {fileID: 5557209640286058980}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -3091,19 +2684,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5557209640286058980
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4131569868780809366}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &4260997616899517106
 GameObject:
   m_ObjectHideFlags: 0
@@ -3115,7 +2695,6 @@ GameObject:
   - component: {fileID: 4626651863356359181}
   - component: {fileID: 7322480287625546365}
   - component: {fileID: 7763649965987717330}
-  - component: {fileID: 4597505260370526282}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -3188,19 +2767,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4597505260370526282
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4260997616899517106}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &4616594371283094532
 GameObject:
   m_ObjectHideFlags: 0
@@ -3212,7 +2778,6 @@ GameObject:
   - component: {fileID: 6191065189271178861}
   - component: {fileID: 2346800414219579184}
   - component: {fileID: 8470576221451900939}
-  - component: {fileID: 7974633608474722377}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -3285,19 +2850,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7974633608474722377
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4616594371283094532}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &4926186669565668298
 GameObject:
   m_ObjectHideFlags: 0
@@ -3309,7 +2861,6 @@ GameObject:
   - component: {fileID: 8657888745364622011}
   - component: {fileID: 7645219509090453393}
   - component: {fileID: 7111092210074773516}
-  - component: {fileID: 8827496863677617390}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -3382,19 +2933,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8827496863677617390
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4926186669565668298}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &5010266950678496028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3406,7 +2944,6 @@ GameObject:
   - component: {fileID: 5564736983813415813}
   - component: {fileID: 3564977183030044748}
   - component: {fileID: 2345532492756549504}
-  - component: {fileID: 315128930113202776}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -3479,19 +3016,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &315128930113202776
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5010266950678496028}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &5120655274232117944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3503,7 +3027,6 @@ GameObject:
   - component: {fileID: 2057888845762156915}
   - component: {fileID: 4680401064941727076}
   - component: {fileID: 7414364478267916123}
-  - component: {fileID: 2487450655039121160}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -3576,19 +3099,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2487450655039121160
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5120655274232117944}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &5268857827367712350
 GameObject:
   m_ObjectHideFlags: 0
@@ -3600,7 +3110,6 @@ GameObject:
   - component: {fileID: 8666977187035440218}
   - component: {fileID: 4753849772174599241}
   - component: {fileID: 631081420126626755}
-  - component: {fileID: 3964915155533866070}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -3673,19 +3182,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3964915155533866070
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5268857827367712350}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &5317307763485363224
 GameObject:
   m_ObjectHideFlags: 0
@@ -3697,7 +3193,6 @@ GameObject:
   - component: {fileID: 6665641663918458850}
   - component: {fileID: 7371087283728335881}
   - component: {fileID: 7475289847287387072}
-  - component: {fileID: 1744958471701590015}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -3770,19 +3265,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1744958471701590015
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5317307763485363224}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &5335706156849198909
 GameObject:
   m_ObjectHideFlags: 0
@@ -3827,7 +3309,6 @@ GameObject:
   - component: {fileID: 4882428969767713189}
   - component: {fileID: 2697095566438241768}
   - component: {fileID: 8584949485518428354}
-  - component: {fileID: 2870459543991468280}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -3900,19 +3381,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2870459543991468280
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5384590841394145106}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &5509210451881181903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,7 +3392,6 @@ GameObject:
   - component: {fileID: 3851929181754346242}
   - component: {fileID: 6619616236811026795}
   - component: {fileID: 4290000702780001600}
-  - component: {fileID: 5820184504070647122}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -3997,19 +3464,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5820184504070647122
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5509210451881181903}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &6571184389613472534
 GameObject:
   m_ObjectHideFlags: 0
@@ -4021,7 +3475,6 @@ GameObject:
   - component: {fileID: 5513835990315749230}
   - component: {fileID: 8621350447870610708}
   - component: {fileID: 1530755762457610295}
-  - component: {fileID: 3302404646729569284}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -4094,19 +3547,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3302404646729569284
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6571184389613472534}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &6631369117023658457
 GameObject:
   m_ObjectHideFlags: 0
@@ -4118,7 +3558,6 @@ GameObject:
   - component: {fileID: 6534828764932723085}
   - component: {fileID: 7451449020930807418}
   - component: {fileID: 7776460301699473464}
-  - component: {fileID: 5015613800225940578}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -4191,19 +3630,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5015613800225940578
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6631369117023658457}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &6912538860426625921
 GameObject:
   m_ObjectHideFlags: 0
@@ -4215,7 +3641,6 @@ GameObject:
   - component: {fileID: 1377706928385670648}
   - component: {fileID: 5399219903788367666}
   - component: {fileID: 735859211062663886}
-  - component: {fileID: 7300873620190016983}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -4288,19 +3713,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7300873620190016983
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6912538860426625921}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &7129624760814453262
 GameObject:
   m_ObjectHideFlags: 0
@@ -4312,7 +3724,6 @@ GameObject:
   - component: {fileID: 4739763838220250171}
   - component: {fileID: 6259113775854801590}
   - component: {fileID: 6600710468740758927}
-  - component: {fileID: 3649192571313683535}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -4385,19 +3796,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3649192571313683535
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7129624760814453262}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &7200592536201945327
 GameObject:
   m_ObjectHideFlags: 0
@@ -4409,7 +3807,6 @@ GameObject:
   - component: {fileID: 7331096597513487848}
   - component: {fileID: 8221520156022866353}
   - component: {fileID: 3606176920916183009}
-  - component: {fileID: 1688003734560378273}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -4482,19 +3879,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1688003734560378273
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7200592536201945327}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &7398588123405909998
 GameObject:
   m_ObjectHideFlags: 0
@@ -4506,7 +3890,6 @@ GameObject:
   - component: {fileID: 7835055496225051027}
   - component: {fileID: 3553901265299837076}
   - component: {fileID: 2603933013790011801}
-  - component: {fileID: 2251800894318519607}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -4579,19 +3962,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2251800894318519607
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7398588123405909998}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &7422378616824025185
 GameObject:
   m_ObjectHideFlags: 0
@@ -4603,7 +3973,6 @@ GameObject:
   - component: {fileID: 4784553611948326933}
   - component: {fileID: 8909269783634612711}
   - component: {fileID: 5047882163208577129}
-  - component: {fileID: 9061708937482352818}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -4676,19 +4045,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9061708937482352818
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7422378616824025185}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &7621993030019053296
 GameObject:
   m_ObjectHideFlags: 0
@@ -4700,7 +4056,6 @@ GameObject:
   - component: {fileID: 2745005058171972382}
   - component: {fileID: 6482533073670739652}
   - component: {fileID: 7754763798125254560}
-  - component: {fileID: 7917521261904494445}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -4773,19 +4128,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7917521261904494445
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7621993030019053296}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &7762754610978250620
 GameObject:
   m_ObjectHideFlags: 0
@@ -4876,7 +4218,6 @@ GameObject:
   - component: {fileID: 1973146998350915126}
   - component: {fileID: 8431738001498268778}
   - component: {fileID: 660865273548811890}
-  - component: {fileID: 7729893220148803035}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -4949,19 +4290,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7729893220148803035
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7879006094690010148}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &7985676640535711177
 GameObject:
   m_ObjectHideFlags: 0
@@ -4973,7 +4301,6 @@ GameObject:
   - component: {fileID: 605054710880131584}
   - component: {fileID: 4580607770996370945}
   - component: {fileID: 94805691702076598}
-  - component: {fileID: 830685113426385186}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -5046,19 +4373,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &830685113426385186
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7985676640535711177}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &8171721299020133486
 GameObject:
   m_ObjectHideFlags: 0
@@ -5070,7 +4384,6 @@ GameObject:
   - component: {fileID: 2322844859102422045}
   - component: {fileID: 7513516838321042275}
   - component: {fileID: 5894502636317440066}
-  - component: {fileID: 1671977295191094867}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -5143,19 +4456,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1671977295191094867
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171721299020133486}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &8347540226473674200
 GameObject:
   m_ObjectHideFlags: 0
@@ -5204,7 +4504,6 @@ GameObject:
   - component: {fileID: 1278870713507007871}
   - component: {fileID: 8958280404628986096}
   - component: {fileID: 5630814779044091707}
-  - component: {fileID: 2443797088242226964}
   m_Layer: 0
   m_Name: Shor
   m_TagString: Untagged
@@ -5277,19 +4576,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2443797088242226964
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8614682330885534147}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1001 &635039862236251653
 PrefabInstance:
   m_ObjectHideFlags: 0

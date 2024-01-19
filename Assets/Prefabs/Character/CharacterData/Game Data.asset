@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b3830b18d007849862ddd1a2bad20b, type: 3}
   m_Name: Game Data
   m_EditorClassIdentifier: 
-  highestPoint: 87
-  gold: 57
+  highestPoint: 21
+  gold: 10
   characters:
   - prefab: {fileID: 589145230621473834, guid: 3e2b6d6124ea9e947877271dd8c61bcb, type: 3}
     type: 2
     cost: 100
   - prefab: {fileID: 6960859820014976189, guid: 59347f7aa0c7ab44583338f79d555f35,
       type: 3}
-    type: 3
+    type: 1
     cost: 0
   - prefab: {fileID: 4918196871343741054, guid: 4b5c662e6a11e904e9203c38cf48371c,
       type: 3}
-    type: 2
+    type: 3
     cost: 200
   - prefab: {fileID: 6614470275694341958, guid: f9f076041c3675042b8c231f97009d70,
       type: 3}
@@ -32,7 +32,7 @@ MonoBehaviour:
     cost: 300
   - prefab: {fileID: 7109662848245639312, guid: f98798f643658a441b64523c355113a9,
       type: 3}
-    type: 2
+    type: 1
     cost: 50
   - prefab: {fileID: 4487368681245530977, guid: c9d0ab0da0954b345b83c539b06c146a,
       type: 3}
