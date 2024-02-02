@@ -100,6 +100,84 @@ public class PlayerController : MonoBehaviour
         gameObject.transform.position = new Vector3(0, currentHeight, 0);
         rayCastPoint = gameObject.transform.GetChild(1).gameObject;
     }
+      
+
+    private void OnSwipeLeft()
+        {
+        direction = new Vector3(0, 0, 1);
+        if (!HaveObstacleInThisDirection())
+        {
+            if (planket != null)
+            {
+                planket.GetComponent<Planket>().currentJumpPoint--;
+            }
+            MoveCharacter(new Vector3(0, 0, 1), 270);
+        }
+        else
+        {
+            RotateSmooth(270);
+
+        }
+
+    }
+
+    private void OnSwipeRight()
+    {
+        direction = new Vector3(0, 0, -1);
+        if (!HaveObstacleInThisDirection())
+        {
+            if (planket != null)
+            {
+                planket.GetComponent<Planket>().currentJumpPoint++;
+            }
+            MoveCharacter(new Vector3(0, 0, -1), 90);
+        }
+        else
+        {
+            RotateSmooth(90);
+
+        }
+    }
+
+    private void OnSwipeUp()
+    {
+        direction = new Vector3(1, 0, 0);
+        if (!HaveObstacleInThisDirection())
+        {
+            currentX++;
+            if (planket != null)
+            {
+                planket.GetComponent<Planket>().currentJumpPoint = 100;
+            }
+            MoveCharacter(new Vector3(1, 0, 0), 0);
+        }
+        else
+        {
+            RotateSmooth(0);
+        }
+        //floppyControll.JumpAnim();
+    }
+
+    private void OnSwipeBack()
+    {
+        direction = new Vector3(-1, 0, 0);
+        if (!HaveObstacleInThisDirection())
+        {
+            EventMoveBack();
+            currentX--;
+            if (planket != null)
+            {
+                planket.GetComponent<Planket>().currentJumpPoint = 100;
+            }
+            direction = new Vector3(-1, 0, 0);
+            MoveCharacter(new Vector3(-1, 0, 0), 180);
+        }
+        else
+        {
+            RotateSmooth(180);
+        }
+    }
+
 
     private void Update()
     {
@@ -107,75 +185,19 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-                direction = new Vector3(1, 0, 0);
-                if (!HaveObstacleInThisDirection())
-                {
-                    currentX++;
-                    if (planket != null)
-                    {
-                        planket.GetComponent<Planket>().currentJumpPoint = 100;
-                    }
-                    MoveCharacter(new Vector3(1, 0, 0), 0);
-                }
-                else
-                {
-                    RotateSmooth(0);
-                }
-
+                OnSwipeUp();
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
-                direction = new Vector3(-1, 0, 0);
-                if (!HaveObstacleInThisDirection())
-                {
-                    EventMoveBack();
-                    currentX--;
-                    if (planket != null)
-                    {
-                        planket.GetComponent<Planket>().currentJumpPoint = 100;
-                    }
-                    direction = new Vector3(-1, 0, 0);
-                    MoveCharacter(new Vector3(-1, 0, 0), 180);
-                }
-                else
-                {
-                    RotateSmooth(180);
-                }
+                OnSwipeBack();
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
-                direction = new Vector3(0, 0, -1);
-                if (!HaveObstacleInThisDirection())
-                {
-                    if (planket != null)
-                    {
-                        planket.GetComponent<Planket>().currentJumpPoint++;
-                    }
-                    MoveCharacter(new Vector3(0, 0, -1), 90);
-                }
-                else
-                {
-                    RotateSmooth(90);
-
-                }
-
+                OnSwipeRight();
             }
             if (Input.GetKeyDown(KeyCode.A))
             {
-                direction = new Vector3(0, 0, 1);
-                if (!HaveObstacleInThisDirection())
-                {
-                    if (planket != null)
-                    {
-                        planket.GetComponent<Planket>().currentJumpPoint--;
-                    }
-                    MoveCharacter(new Vector3(0, 0, 1), 270);
-                }
-                else
-                {
-                    RotateSmooth(270);
-
-                }
+                OnSwipeLeft();
             }
         }
 
