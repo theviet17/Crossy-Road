@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
     }
       
 
-    private void OnSwipeLeft()
+    public void OnSwipeLeft()
         {
         direction = new Vector3(0, 0, 1);
         if (!HaveObstacleInThisDirection())
@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnSwipeRight()
+    public void OnSwipeRight()
     {
         direction = new Vector3(0, 0, -1);
         if (!HaveObstacleInThisDirection())
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnSwipeUp()
+    public void OnSwipeUp()
     {
         direction = new Vector3(1, 0, 0);
         if (!HaveObstacleInThisDirection())
@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
         //floppyControll.JumpAnim();
     }
 
-    private void OnSwipeBack()
+    public void OnSwipeBack()
     {
         direction = new Vector3(-1, 0, 0);
         if (!HaveObstacleInThisDirection())
@@ -651,7 +651,9 @@ public class PlayerController : MonoBehaviour
     public void TakeScreenShots()
     {
         var time = DateTime.Now.ToString("dd_MM_yyyy_HH-mm-ss");
-        var screenshotname = $"Assets/ScreenCapture/Screen" + "_" + time + ".png";
+
+        var screenshotname = Path.Combine(Application.persistentDataPath, "ScreenCapture", "Screen_" + time + ".png");
+        //var screenshotname = $"Assets/ScreenCapture/Screen" + "_" + time + ".png";
 
         ScreenCapture.CaptureScreenshot(screenshotname);
 

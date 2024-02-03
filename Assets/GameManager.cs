@@ -43,7 +43,10 @@ public class GameManager : MonoBehaviour
 
         ShowGameData();
     }
-
+    public void Update()
+    {
+        Detector();
+    }
 
     // Input form gameData
     // OutPut show highestPoint, show gold 
@@ -245,7 +248,88 @@ public class GameManager : MonoBehaviour
     }
     public GameObject screenCapturePose1;
     public GameObject screenCapturePose2;
-  
+
+    [Header("SwipeDetector")]
+
+    private Vector2 mXAxis = new Vector2(1, 0);
+    private Vector2 mYAxis = new Vector2(0, 1);
+
+    private float mAngleRange = 30;
+    public float mMinSwipeDist = 50.0f;
+
+    private Vector2 mStartPosition;
+
+    void Detector()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            mStartPosition = new Vector2(Input.mousePosition.x,
+                                         Input.mousePosition.y);
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+
+            Vector2 endPosition = new Vector2(Input.mousePosition.x,
+                                               Input.mousePosition.y);
+            Vector2 swipeVector = endPosition - mStartPosition;
+
+            if (swipeVector.magnitude > mMinSwipeDist)
+            {
+                swipeVector.Normalize();
+
+                float angleOfSwipe = Vector2.Dot(swipeVector, mXAxis);
+                angleOfSwipe = Mathf.Acos(angleOfSwipe) * Mathf.Rad2Deg;
+
+                if (angleOfSwipe < mAngleRange)
+                {
+                    OnSwipeRight();
+                }
+                else if ((180.0f - angleOfSwipe) < mAngleRange)
+                {
+                    OnSwipeLeft();
+                }
+                else
+                {
+                    angleOfSwipe = Vector2.Dot(swipeVector, mYAxis);
+                    angleOfSwipe = Mathf.Acos(angleOfSwipe) * Mathf.Rad2Deg;
+                    if (angleOfSwipe < mAngleRange)
+                    {
+                        OnSwipeTop();
+                    }
+                    else if ((180.0f - angleOfSwipe) < mAngleRange)
+                    {
+                        OnSwipeBottom();
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+
+        }
+    }
+    private void OnSwipeLeft()
+    {
+        playerController.OnSwipeLeft();
+    }
+
+    private void OnSwipeRight()
+    {
+        playerController.OnSwipeRight();
+    }
+
+    private void OnSwipeTop()
+    {
+        playerController.OnSwipeUp();
+    }
+
+    private void OnSwipeBottom()
+    {
+        playerController.OnSwipeBack();
+    }
+
 
 
 }
