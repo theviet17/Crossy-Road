@@ -174,9 +174,6 @@ public class GameManager : MonoBehaviour
         }
         gameData.gold = gold;
         
-        UnityEditor.AssetDatabase.SaveAssets();
-        UnityEditor.AssetDatabase.Refresh();
-        
 #if UNITY_EDITOR
         EditorUtility.SetDirty(gameData);
         AssetDatabase.SaveAssets();
