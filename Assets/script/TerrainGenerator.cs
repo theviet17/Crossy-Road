@@ -329,7 +329,7 @@ public class TerrainGenerator : MonoBehaviour
                     }
                     else
                     {
-                        if (CheckRandomPercentage(16))
+                        if (CheckRandomPercentage(15))
                         {
                             var x = terrain.transform.localToWorldMatrix.GetPosition().x;
                             if (new Vector3(x, 1, i) != new Vector3(0, 1, 0))
