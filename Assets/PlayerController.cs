@@ -651,8 +651,17 @@ public class PlayerController : MonoBehaviour
     public void TakeScreenShots()
     {
         var time = DateTime.Now.ToString("dd_MM_yyyy_HH-mm-ss");
+        Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
 
-        var screenshotname = Path.Combine(Application.persistentDataPath, "ScreenCapture", "Screen_" + time + ".png");
+        texture.ReadPixels(new Rect(0, 0, texture.width, texture.height),0,0);
+        texture.Apply();
+
+        byte[] bytes = texture.EncodeToPNG();
+        var screenshotname = Application.dataPath + "Screen" + "_" + time + ".png";
+        File.WriteAllBytes(screenshotname, bytes);
+
+        //var screenshotname = Path.Combine(Application.dataPath, "ScreenCapture", "Screen_" + time + ".png");
+        //var screenshotname = Path.Combine(Application.persistentDataPath, "ScreenCapture", "Screen_" + time + ".png");
         //var screenshotname = $"Assets/ScreenCapture/Screen" + "_" + time + ".png";
 
         ScreenCapture.CaptureScreenshot(screenshotname);
@@ -673,7 +682,7 @@ public class PlayerController : MonoBehaviour
         previewImage = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
 
         LoadScreenShots();
-        File.Delete(screenshotname);
+        //File.Delete(screenshotname);
     }
 
 
