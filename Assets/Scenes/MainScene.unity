@@ -11777,6 +11777,7 @@ MonoBehaviour:
   Gold: {fileID: 170298649}
   screenCapturePose1: {fileID: 58889718}
   screenCapturePose2: {fileID: 896140552}
+  mMinSwipeDist: 10
 --- !u!4 &1673588233
 Transform:
   m_ObjectHideFlags: 0

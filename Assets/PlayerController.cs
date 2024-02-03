@@ -650,24 +650,25 @@ public class PlayerController : MonoBehaviour
     Sprite previewImage;
     public void TakeScreenShots()
     {
+        StartCoroutine(CaptureScreenshot());
+    }
+    IEnumerator CaptureScreenshot()
+    {
+        yield return new WaitForEndOfFrame(); // Chờ đến cuối của frame hiện tại
+
         var time = DateTime.Now.ToString("dd_MM_yyyy_HH-mm-ss");
         Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
 
-        texture.ReadPixels(new Rect(0, 0, texture.width, texture.height),0,0);
+        texture.ReadPixels(new Rect(0, 0, texture.width, texture.height), 0, 0);
         texture.Apply();
 
         byte[] bytes = texture.EncodeToPNG();
-        var screenshotname = Application.dataPath + "Screen" + "_" + time + ".png";
+        var screenshotname = Application.dataPath + "/Screen_" + time + ".png";
         File.WriteAllBytes(screenshotname, bytes);
 
-        //var screenshotname = Path.Combine(Application.dataPath, "ScreenCapture", "Screen_" + time + ".png");
-        //var screenshotname = Path.Combine(Application.persistentDataPath, "ScreenCapture", "Screen_" + time + ".png");
-        //var screenshotname = $"Assets/ScreenCapture/Screen" + "_" + time + ".png";
-
-        ScreenCapture.CaptureScreenshot(screenshotname);
+        //ScreenCapture.CaptureScreenshot(screenshotname);
 
         StartCoroutine(WaitScreenShot(screenshotname));
-        
     }
     public IEnumerator WaitScreenShot(string screenshotname)
     {

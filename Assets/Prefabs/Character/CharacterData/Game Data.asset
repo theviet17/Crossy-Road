@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b3830b18d007849862ddd1a2bad20b, type: 3}
   m_Name: Game Data
   m_EditorClassIdentifier: 
-  highestPoint: 10
+  highestPoint: 22
   gold: 71
   characters:
   - prefab: {fileID: 589145230621473834, guid: 3e2b6d6124ea9e947877271dd8c61bcb, type: 3}
