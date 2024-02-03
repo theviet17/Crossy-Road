@@ -12,7 +12,7 @@ public class Planket : MonoBehaviour
     {
        StartCoroutine(Heaving());
     }
-    public IEnumerator Heaving()
+    private IEnumerator Heaving()
     {
         var childObject = this.transform.GetChild(0);
         StartCoroutine(floatingTime.Tweeng((p) =>childObject.transform.localPosition = p,

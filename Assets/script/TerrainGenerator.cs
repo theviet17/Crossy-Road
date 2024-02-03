@@ -211,25 +211,12 @@ public class TerrainGenerator : MonoBehaviour
         terrain.name = "River";
         var previousTerain = currentTerrains[currentTerrains.IndexOf(terrain) - 1];
         int randomNumber = 0;
-        if (previousTerain.name != terrain.name)
-        {
-            randomNumber = Random.Range(0, 100);
-        }
-        else
-        {
-            randomNumber = CurrentPlankType == 0 ? 1 : 0;
-        }
-         
-        if (randomNumber % 2 == 0)
-        {
-            Instance(terrain, PlankInstancePoint[0], new Vector3(0, -0.05f, 0.3f));
-            CurrentPlankType = 0;
-        }
-        else
-        {
-            Instance(terrain, PlankInstancePoint[1], new Vector3(0, -0.05f, -0.3f));
-            CurrentPlankType = 1;
-        }
+
+        randomNumber = (previousTerain.tag != terrain.tag) ? Random.Range(0, 100) : (CurrentPlankType == 0) ? 1 : 0;
+
+        CurrentPlankType = (randomNumber % 2 == 0) ? 0 : 1;
+
+        Instance(terrain, PlankInstancePoint[CurrentPlankType], new Vector3(0, -0.05f, (CurrentPlankType == 0) ? 0.3f : -0.3f));
     }
     public void GenerateDuckweed(GameObject terrain)
     {
@@ -250,32 +237,20 @@ public class TerrainGenerator : MonoBehaviour
         }
         else
         {
-            int numberDuckweed;
-            var randomNumber = Random.Range(0, 100);
-            if (randomNumber < 60)
-            {
-                numberDuckweed = 2;
-            }
-            else if (randomNumber < 90)
-            {
-                numberDuckweed = 1;
-            }
-            else
-            {
-                numberDuckweed = 3;
-            }
+            int numberDuckweed = RandDomDuckweedNumber();
+
+
             var currentZ = 100;
+           
+
             for (int i = 1; i <= numberDuckweed; i++)
             {
+                int randomNumber = 0;
                 int z;
-                if (CurrentPlankType % 2 == 0)
-                {
-                    z = Random.Range(-3, 1);
-                }
-                else
-                {
-                    z = Random.Range(-1, 3);
-                }
+                randomNumber = (previousTerain.tag != terrain.tag) ? Random.Range(0, 100) : (CurrentPlankType == 0) ? 1 : 0;
+
+                z = (randomNumber % 2 == 0) ? Random.Range(0, 4) : Random.Range(-1, -4);
+
                 if (z != currentZ)
                 {
                     currentZ = z;
@@ -284,12 +259,28 @@ public class TerrainGenerator : MonoBehaviour
                     ob.transform.SetParent(terrain.transform);
                     position.Add(z);
                 }
-
             }
         }
-        GenerateDuckweedGold(terrain,position);
+        GenerateGoldOnDuckweed(terrain,position);
     }
-    public void GenerateDuckweedGold(GameObject terrain, List<float> position)
+    private int RandDomDuckweedNumber()
+    {
+        var randomNumber = Random.Range(0, 100);
+        if (randomNumber < 60)
+        {
+             return  2;
+        }
+        else if (randomNumber < 90)
+        {
+            return  1;
+        }
+        else
+        {
+            return  3;
+        }
+        return 0;
+    }
+    private void GenerateGoldOnDuckweed(GameObject terrain, List<float> position)
     {
         if (CheckRandomPercentage(goldProbability))
         {
@@ -338,7 +329,7 @@ public class TerrainGenerator : MonoBehaviour
                     }
                     else
                     {
-                        if (CheckRandomPercentage(17))
+                        if (CheckRandomPercentage(16))
                         {
                             var x = terrain.transform.localToWorldMatrix.GetPosition().x;
                             if (new Vector3(x, 1, i) != new Vector3(0, 1, 0))

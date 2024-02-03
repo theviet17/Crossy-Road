@@ -82,7 +82,7 @@ public class SelectedCharacter : MonoBehaviour
         Instance3DModel();
     }
 
-    public void Instance3DModel()
+    private void Instance3DModel()
     {
         if(transform.childCount > 5)
         {
@@ -117,7 +117,7 @@ public class SelectedCharacter : MonoBehaviour
         CharacterWithAnimation(false);
 
     }
-    public void ChangeViewCharacterPanel(int value)
+    private void ChangeViewCharacterPanel(int value)
     {
         ViewCharacterPanel.gameObject.SetActive(true);
 
@@ -144,7 +144,7 @@ public class SelectedCharacter : MonoBehaviour
 
 
     }
-    public void CharacterWithoutAnimation()
+    private void CharacterWithoutAnimation()
     {
         Pose(characters[centerPosition].prefab, pose[1]);
 
@@ -156,7 +156,7 @@ public class SelectedCharacter : MonoBehaviour
 
         Pose(characters[rightPoint2].prefab, pointEnd);  
     }
-    public void CharacterWithAnimation(bool arrowLeft)
+    private void CharacterWithAnimation(bool arrowLeft)
     {
         if (!arrowLeft)
         {
@@ -192,7 +192,7 @@ public class SelectedCharacter : MonoBehaviour
         }
     }
 
-    public void Pose(GameObject gameObject, Transform pose)
+    private void Pose(GameObject gameObject, Transform pose)
     {
         gameObject.gameObject.SetActive(true);
         gameObject.transform.localPosition = pose.localPosition;
@@ -200,7 +200,7 @@ public class SelectedCharacter : MonoBehaviour
         gameObject.transform.localScale = pose.localScale;
     }
 
-    public void PoseWithAnim(GameObject gameObject,Transform nextPose)
+    private void PoseWithAnim(GameObject gameObject,Transform nextPose)
     {
         StartCoroutine(ChangeViewCharacterPanelTime.Tweeng((p) => gameObject.transform.localPosition = p,
               gameObject.transform.localPosition, nextPose.localPosition));
@@ -211,8 +211,8 @@ public class SelectedCharacter : MonoBehaviour
         StartCoroutine(ChangeViewCharacterPanelTime.Tweeng((p) => gameObject.transform.localScale = p,
               gameObject.transform.localScale, nextPose.localScale));
     }
-       
-    public void ButtonData()
+
+    private void ButtonData()
     {
         if(characters[centerPosition].type == 1)
         {
@@ -254,7 +254,7 @@ public class SelectedCharacter : MonoBehaviour
     {
         SelectedCharactor();
     }
-    public void SelectedCharactor()
+    private void SelectedCharactor()
     {
         ChangeType(gameData.characters);
         ChangeType(characters);
@@ -265,7 +265,7 @@ public class SelectedCharacter : MonoBehaviour
 
         ButtonData();
     }
-    public void ChangeType( List<Character> characterData)
+    private void ChangeType( List<Character> characterData)
     {
         for (int i = 0; i < characterData.Count; i++)
         {

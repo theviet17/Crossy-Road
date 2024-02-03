@@ -340,7 +340,7 @@ public class GameManager : MonoBehaviour
 
     private Vector2 mStartPosition;
 
-    void Detector()
+    private void Detector()
     {
         if (Input.GetMouseButtonDown(0))
         {
