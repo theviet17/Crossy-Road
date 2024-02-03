@@ -431,7 +431,6 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.name == "Hawks")
         {
-            onPlank = false;
             hawkCatch = true;
 
             //direction = new Vector3(0, 0, 0);
@@ -455,12 +454,13 @@ public class PlayerController : MonoBehaviour
     public void CaughtByHawks()
     {
         canJump = false;
+        onPlank = false;
         hawk.transform.position = new Vector3(gameObject.transform.position.x - 10, hawk.transform.position.y, gameObject.transform.position.z);
 
         hawk.GetComponent<AudioSource>().Play();
 
         StartCoroutine(1f.Tweeng((p) => hawk.transform.position = p,
-              hawk.transform.position, gameObject.transform.position + new Vector3(20, 0, 0)));
+              hawk.transform.position, gameObject.transform.position + new Vector3(25, 0, 0)));
     }
 
     public void OnSwipeLeft()
