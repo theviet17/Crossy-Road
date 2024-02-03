@@ -244,11 +244,11 @@ public class GameManager : MonoBehaviour
 
     public Image screenCapture;
     Sprite previewImage;
-    public void TakeScreenShots()
+    private void TakeScreenShots()
     {
         StartCoroutine(CaptureScreenshot());
     }
-    IEnumerator CaptureScreenshot()
+    private IEnumerator CaptureScreenshot()
     {
         yield return new WaitForEndOfFrame(); // Chờ đến cuối của frame hiện tại
 
@@ -266,7 +266,7 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(WaitScreenShot(screenshotname));
     }
-    public IEnumerator WaitScreenShot(string screenshotname)
+    private IEnumerator WaitScreenShot(string screenshotname)
     {
         yield return new WaitForSeconds(0.1f);
 
@@ -283,13 +283,13 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void LoadScreenShots()
+    private void LoadScreenShots()
     {
         screenCapture.gameObject.SetActive(true);
         screenCapture.transform.GetChild(0).GetComponent<Image>().sprite = previewImage;
     }
 
-    public void HideScreenCapture()
+    private void HideScreenCapture()
     {
         screenCapture.gameObject.SetActive(false);
     }
