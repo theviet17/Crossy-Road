@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     private int gold;
     void Start()
     {
+        Screen.SetResolution(1080, 1920, fullscreen: true);
         gameData = selectedCharacter.gameData;
 
         terrainGenerator.TerrainGeneratorStart();
