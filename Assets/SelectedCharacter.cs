@@ -247,9 +247,14 @@ public class SelectedCharacter : MonoBehaviour
         ChangeType(gameData.characters);
         ChangeType(characters);
 
+        UnityEditor.AssetDatabase.SaveAssets();
+        UnityEditor.AssetDatabase.Refresh();
+#if UNITY_EDITOR
         EditorUtility.SetDirty(gameData);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
+#endif
+       
 
         ButtonData();
     }

@@ -664,7 +664,7 @@ public class PlayerController : MonoBehaviour
 
         // Đọc dữ liệu ảnh từ tệp hình ảnh
         byte[] fileData = File.ReadAllBytes(screenshotname);
-        Texture2D texture = new Texture2D(2, 2); // Kích thước không quan trọng ở đây
+        Texture2D texture = new Texture2D(2, 2); 
         texture.LoadImage(fileData); // Đọc dữ liệu hình ảnh
 
         // Tạo Sprite từ Texture2D

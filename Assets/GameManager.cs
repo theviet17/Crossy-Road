@@ -169,10 +169,15 @@ public class GameManager : MonoBehaviour
             gameData.highestPoint = point;
         }
         gameData.gold = gold;
-
+        
+        UnityEditor.AssetDatabase.SaveAssets();
+        UnityEditor.AssetDatabase.Refresh();
+        
+#if UNITY_EDITOR
         EditorUtility.SetDirty(gameData);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
+#endif
 
         point = 0;
         ShowUIPoint();
@@ -232,6 +237,11 @@ public class GameManager : MonoBehaviour
               screenCapture.transform.localScale, screenCapturePose2.transform.localScale));
         }
         
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
     public GameObject screenCapturePose1;
     public GameObject screenCapturePose2;
