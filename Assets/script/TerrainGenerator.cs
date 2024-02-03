@@ -22,18 +22,15 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private int goldProbability = 3;
     [SerializeField] private GameObject textLine;
     [SerializeField] private int topPoint;
-    [SerializeField] private GameData gameData;
-    private void Start()
-    {
-        topPoint = gameData.highestPoint;
-    }
+    [SerializeField] public GameData gameData;
+ 
     public void ReStart()
     {
         DestroyAllChildrenObjects();
         currentTerrains.Clear();
         currentPosition = new Vector3(-10, 0, 0);
         numberTerrainInStartPoint = 0;
-        topPoint = gameData.highestPoint;
+        //topPoint = gameData.highestPoint;
         TerrainGeneratorStart();
     }
     void DestroyAllChildrenObjects()
@@ -45,6 +42,7 @@ public class TerrainGenerator : MonoBehaviour
     }
     public void TerrainGeneratorStart()
     {
+        topPoint = gameData.highestPoint;
         numberTerrainInStartPoint = Random.Range(12, 20);
         for (int i = 0; i < maxTerrainCount; i++)
         {
@@ -63,7 +61,7 @@ public class TerrainGenerator : MonoBehaviour
             {
                GameObject terrain = Instantiate(terrainDatas[wichTerrain].possibleTerrain[Random.Range(0,terrainDatas[wichTerrain].possibleTerrain.Count)], currentPosition, Quaternion.identity, terrainHolder);
 
-               if(currentPosition.x == topPoint)
+               if(currentPosition.x == topPoint && topPoint!= 0)
                 {
                     GameObject textline = Instantiate(textLine, currentPosition, Quaternion.identity, terrainHolder);
                     textline.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Top " +topPoint.ToString();

@@ -1,6 +1,8 @@
-
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private SelectedCharacter selectedCharacter;
 
-    [HideInInspector] public GameData gameData;
+    [SerializeField] public GameData gameData;
     public Text Point1;
     public Text Point2;
     private int point;
@@ -32,13 +34,31 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Screen.SetResolution(1080, 1920, fullscreen: true);
-        gameData = selectedCharacter.gameData;
+
+        if (File.Exists(Application.dataPath + "/GameData.json"))
+        {
+            // Tệp tồn tại
+            Debug.Log("Tệp tồn tại: ");
+            GameData loadedData = gameData.LoadNewGameData();
+            gameData = loadedData;
+        }
+        else
+        {
+            // Tệp không tồn tại
+            Debug.Log("Tệp không tồn tại: ");
+            gameData.SaveToJson();
+        }
+        Debug.Log(Application.dataPath + "/GameData.json");
+        playerController.gameData = gameData;
+        terrainGenerator.gameData = gameData;
+        selectedCharacter.gameData = gameData;
+        //gameData = selectedCharacter.gameData;
 
         terrainGenerator.TerrainGeneratorStart();
         playerController.PlayerControllerStart();
 
         playerController.MoveOn += IncreasePoint;
-        playerController.MoveBack += MinusPoint;
+        //playerController.MoveBack += MinusPoint;
         playerController.Gold += IncreaseGold;
         playerController.Die += EndGame;
 
@@ -63,7 +83,7 @@ public class GameManager : MonoBehaviour
     void ReStart()
     {
         //if()
-        playerController.HideScreenCapture();
+        HideScreenCapture();
         playerController.ReStart();
 
         menuPanel.gameObject.SetActive(false);
@@ -72,7 +92,7 @@ public class GameManager : MonoBehaviour
     // OutPut show Character Panel ,  hide menu Panel
     void CharacterLoad()
     {
-        playerController.HideScreenCapture();
+        HideScreenCapture();
         selectedCharacter.gameObject.SetActive(true);
         selectedCharacter.StartCharacterPanel();
 
@@ -92,8 +112,14 @@ public class GameManager : MonoBehaviour
    
     void EndGame()
     {
+        if (point > gameData.highestPoint)
+        {
+            TakeScreenShots();
+        }
         StartCoroutine(WaitReLoadNewGame());
     }
+ 
+    
 
     // OutPut Save gamedata, show menu panel
     IEnumerator WaitReLoadNewGame()
@@ -173,12 +199,15 @@ public class GameManager : MonoBehaviour
             gameData.highestPoint = point;
         }
         gameData.gold = gold;
-        
-#if UNITY_EDITOR
-        EditorUtility.SetDirty(gameData);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-#endif
+
+        gameData.SaveToJson();
+        gameData = gameData.LoadNewGameData();
+
+        //#if UNITY_EDITOR
+        //        EditorUtility.SetDirty(gameData);
+        //        AssetDatabase.SaveAssets();
+        //        AssetDatabase.Refresh();
+        //#endif
 
         point = 0;
         ShowUIPoint();
@@ -208,13 +237,68 @@ public class GameManager : MonoBehaviour
         Point2.text = Point1.text;
     }
     bool openScreenCapture = false;
+
+    [Header("Capture")]
+    public GameObject screenCapturePose1;
+    public GameObject screenCapturePose2;
+
+    public Image screenCapture;
+    Sprite previewImage;
+    public void TakeScreenShots()
+    {
+        StartCoroutine(CaptureScreenshot());
+    }
+    IEnumerator CaptureScreenshot()
+    {
+        yield return new WaitForEndOfFrame(); // Chờ đến cuối của frame hiện tại
+
+        var time = DateTime.Now.ToString("dd_MM_yyyy_HH-mm-ss");
+        Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+
+        texture.ReadPixels(new Rect(0, 0, texture.width, texture.height), 0, 0);
+        texture.Apply();
+
+        byte[] bytes = texture.EncodeToPNG();
+        var screenshotname = Application.dataPath + "/Screen_" + time + ".png";
+        File.WriteAllBytes(screenshotname, bytes);
+
+        //ScreenCapture.CaptureScreenshot(screenshotname);
+
+        StartCoroutine(WaitScreenShot(screenshotname));
+    }
+    public IEnumerator WaitScreenShot(string screenshotname)
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        // Đọc dữ liệu ảnh từ tệp hình ảnh
+        byte[] fileData = File.ReadAllBytes(screenshotname);
+        Texture2D texture = new Texture2D(2, 2);
+        texture.LoadImage(fileData); // Đọc dữ liệu hình ảnh
+
+        // Tạo Sprite từ Texture2D
+        previewImage = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+
+        LoadScreenShots();
+        File.Delete(screenshotname);
+    }
+
+
+    void LoadScreenShots()
+    {
+        screenCapture.gameObject.SetActive(true);
+        screenCapture.transform.GetChild(0).GetComponent<Image>().sprite = previewImage;
+    }
+
+    public void HideScreenCapture()
+    {
+        screenCapture.gameObject.SetActive(false);
+    }
     public void ScreenCaptureClick()
     {
         float time = 0.2f;
         if (!openScreenCapture)
         {
             openScreenCapture = true;
-            var screenCapture = playerController.screenCapture;
             StartCoroutine(time.Tweeng((p) => screenCapture.transform.position = p,
               screenCapture.transform.position, screenCapturePose1.transform.position));
 
@@ -227,7 +311,6 @@ public class GameManager : MonoBehaviour
         else
         {
             openScreenCapture = false;
-            var screenCapture = playerController.screenCapture;
             StartCoroutine(time.Tweeng((p) => screenCapture.transform.position = p,
               screenCapture.transform.position, screenCapturePose2.transform.position));
 
@@ -244,16 +327,16 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
-    public GameObject screenCapturePose1;
-    public GameObject screenCapturePose2;
+    
+
 
     [Header("SwipeDetector")]
-
+    public float mMinSwipeDist = 50.0f;
     private Vector2 mXAxis = new Vector2(1, 0);
     private Vector2 mYAxis = new Vector2(0, 1);
 
     private float mAngleRange = 30;
-    public float mMinSwipeDist = 50.0f;
+    
 
     private Vector2 mStartPosition;
 

@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,10 +6,17 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class CharacterDTO
+{
+    public int type; // 1 lock , 2 unlock, 3 select
+    public int cost;
 
+    // ...
+}
 [Serializable]
 public struct Character
 {
+    [JsonIgnore]
     public GameObject prefab;
     public int type; // 1 lock , 2 unlock, 3 select
     public int cost;
@@ -21,6 +29,10 @@ public struct Character
     public void ChangeType(int newType)
     {
         this.type = newType;
+    }
+    public CharacterDTO ToDTO()
+    {
+        return new CharacterDTO { type = this.type, cost = this.cost };
     }
 }
 public class SelectedCharacter : MonoBehaviour
@@ -247,12 +259,9 @@ public class SelectedCharacter : MonoBehaviour
         ChangeType(gameData.characters);
         ChangeType(characters);
 
-#if UNITY_EDITOR
-        EditorUtility.SetDirty(gameData);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-#endif
-       
+        gameData.SaveToJson();
+        gameData = gameData.LoadNewGameData();
+
 
         ButtonData();
     }

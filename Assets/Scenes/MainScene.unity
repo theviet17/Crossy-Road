@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44354326, g: 0.49284786, b: 0.57243854, a: 1}
+  m_IndirectSpecularColor: {r: 0.44354364, g: 0.49284798, b: 0.5724388, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3769,7 +3769,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  screenCapture: {fileID: 289386465}
 --- !u!65 &549864263
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7669,7 +7668,7 @@ MonoBehaviour:
   - {fileID: 330088090}
   pointStart: {fileID: 1434194995}
   pointEnd: {fileID: 1626205342}
-  gameData: {fileID: 11400000, guid: d257ffcec53174f40b6292d21f0ddc98, type: 2}
+  gameData: {fileID: 0}
   characters: []
   ChangeViewCharacterPanelTime: 0.5
   ViewCharacterPanel: {fileID: 100393641}
@@ -11770,13 +11769,14 @@ MonoBehaviour:
   logoLoadTime: 0.8
   menuPanel: {fileID: 513458605}
   selectedCharacter: {fileID: 1156355912}
-  gameData: {fileID: 0}
+  gameData: {fileID: 11400000, guid: d257ffcec53174f40b6292d21f0ddc98, type: 2}
   Point1: {fileID: 529739103}
   Point2: {fileID: 767538654}
   HighestPoint: {fileID: 1537199872}
   Gold: {fileID: 170298649}
   screenCapturePose1: {fileID: 58889718}
   screenCapturePose2: {fileID: 896140552}
+  screenCapture: {fileID: 289386465}
   mMinSwipeDist: 10
 --- !u!4 &1673588233
 Transform:
@@ -14251,7 +14251,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  screenCapture: {fileID: 0}
 --- !u!23 &2101001949
 MeshRenderer:
   m_ObjectHideFlags: 0

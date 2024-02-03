@@ -83,10 +83,7 @@ public class PlayerController : MonoBehaviour
         EventStart();
         PlayerControllerStart();
     }
-    public void HideScreenCapture()
-    {
-        screenCapture.gameObject.SetActive(false);
-    }
+   
     public void ReLoadParentStatus()
     {
         onPlank = false;
@@ -606,10 +603,7 @@ public class PlayerController : MonoBehaviour
     public void EventDie()
     {
         canJump = false;
-        if(transform.position.x > gameData.highestPoint)
-        {
-            TakeScreenShots();
-        }
+       
         //
         Die?.Invoke();
     }
@@ -646,50 +640,5 @@ public class PlayerController : MonoBehaviour
               hawk.transform.position, gameObject.transform.position + new Vector3(20, 0, 0), hawkCurve));
     }
 
-    public Image screenCapture;
-    Sprite previewImage;
-    public void TakeScreenShots()
-    {
-        StartCoroutine(CaptureScreenshot());
-    }
-    IEnumerator CaptureScreenshot()
-    {
-        yield return new WaitForEndOfFrame(); // Chờ đến cuối của frame hiện tại
-
-        var time = DateTime.Now.ToString("dd_MM_yyyy_HH-mm-ss");
-        Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-
-        texture.ReadPixels(new Rect(0, 0, texture.width, texture.height), 0, 0);
-        texture.Apply();
-
-        byte[] bytes = texture.EncodeToPNG();
-        var screenshotname = Application.dataPath + "/Screen_" + time + ".png";
-        File.WriteAllBytes(screenshotname, bytes);
-
-        //ScreenCapture.CaptureScreenshot(screenshotname);
-
-        StartCoroutine(WaitScreenShot(screenshotname));
-    }
-    public IEnumerator WaitScreenShot(string screenshotname)
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        // Đọc dữ liệu ảnh từ tệp hình ảnh
-        byte[] fileData = File.ReadAllBytes(screenshotname);
-        Texture2D texture = new Texture2D(2, 2); 
-        texture.LoadImage(fileData); // Đọc dữ liệu hình ảnh
-
-        // Tạo Sprite từ Texture2D
-        previewImage = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-
-        LoadScreenShots();
-        //File.Delete(screenshotname);
-    }
-
-
-    void LoadScreenShots()
-    {
-        screenCapture.gameObject.SetActive(true);
-        screenCapture.transform.GetChild(0).GetComponent<Image>().sprite = previewImage;
-    }
+    
 }
